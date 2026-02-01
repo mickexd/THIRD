@@ -1,0 +1,316 @@
+---
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+
+const translations = await import(`../locales/${locale}.json`);
+const t = translations.default;
+---
+
+<section class="contact" id="contact-section">
+  <div class="contact-container">
+    <div class="contact-header">
+      <h2 class="reveal-text" data-t="contact.title">{t.contact.title}</h2>
+      <div class="header-line"></div>
+      <p class="section-intro" data-t="contact.description">
+        {t.contact.description}
+      </p>
+    </div>
+
+    <div class="contact-options">
+      <a href="mailto:hola@thirdstudio.tech" class="contact-card">
+        <span class="contact-number">01</span>
+        <h3 class="contact-title">Email</h3>
+        <p class="contact-info" data-t="brochure.contact.email">
+          {t.brochure.contact.email}
+        </p>
+        <div class="contact-arrow">→</div>
+        <div class="contact-bg"></div>
+      </a>
+
+      <a
+        href="https://wa.me/+5213338153789"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contact-card"
+      >
+        <span class="contact-number">02</span>
+        <h3 class="contact-title">WhatsApp</h3>
+        <p class="contact-info" data-t="brochure.contact.phone">
+          {t.brochure.contact.phone}
+        </p>
+        <div class="contact-arrow">→</div>
+        <div class="contact-bg"></div>
+      </a>
+
+      <button type="button" class="contact-card" id="download-vcard">
+        <span class="contact-number">03</span>
+        <h3 class="contact-title" data-t="contact.saveContact">
+          {t.contact.saveContact}
+        </h3>
+        <p class="contact-info" data-t="contact.downloadVCard">
+          {t.contact.downloadVCard}
+        </p>
+        <div class="contact-arrow">↓</div>
+        <div class="contact-bg"></div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    background-color: #0a0a0a;
+    padding: 15vh 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .contact-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .contact-header {
+    margin-bottom: 10vh;
+    text-align: left;
+  }
+
+  .contact-header h2 {
+    font-size: clamp(3rem, 8vw, 10rem);
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-family: "Inter", system-ui, sans-serif;
+    letter-spacing: -0.04em;
+  }
+
+  .contact-header .header-line {
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ec4899 0%, #9333ea 100%);
+    margin-bottom: 30px;
+  }
+
+  .section-intro {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  .contact-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .contact-card {
+    position: relative;
+    height: 300px;
+    padding: 40px;
+    background-color: #111111;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.6s ease;
+    text-decoration: none;
+    border: none;
+    text-align: left;
+  }
+
+  .contact-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
+  }
+
+  .contact-card:hover .contact-bg {
+    transform: scaleY(1);
+  }
+
+  .contact-number {
+    font-family: "Geist Mono", "Fira Code", monospace;
+    font-size: 1rem;
+    color: #9333ea;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+  }
+
+  .contact-title {
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 20px 0;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+  }
+
+  .contact-info {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+  }
+
+  .contact-arrow {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    font-size: 2rem;
+    color: #9333ea;
+    position: relative;
+    z-index: 2;
+    transition:
+      color 0.4s ease,
+      transform 0.4s ease;
+  }
+
+  .contact-card:hover .contact-number,
+  .contact-card:hover .contact-title,
+  .contact-card:hover .contact-info,
+  .contact-card:hover .contact-arrow {
+    color: #ffffff;
+  }
+
+  .contact-card:hover .contact-arrow {
+    transform: translateX(10px);
+  }
+
+  @media (max-width: 900px) {
+    .contact {
+      padding: 10vh 5vw;
+    }
+
+    .contact-header h2 {
+      font-size: 2.5rem;
+    }
+
+    .contact-options {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+      height: 200px;
+      padding: 30px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".contact");
+    if (!section) return;
+
+    const header = section.querySelector(".contact-header h2");
+    const headerLine = section.querySelector(".header-line");
+    const intro = section.querySelector(".section-intro");
+    const cards = section.querySelectorAll(".contact-card");
+
+    gsap.set(header, { y: 100, opacity: 0 });
+    gsap.set(headerLine, { width: 0 });
+    gsap.set(intro, { y: 30, opacity: 0 });
+    gsap.set(cards, { y: 80, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.to(header, {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "expo.out",
+    })
+      .to(
+        headerLine,
+        {
+          width: "200px",
+          duration: 1.5,
+          ease: "power4.inOut",
+        },
+        "-=0.8",
+      )
+      .to(
+        intro,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=1",
+      )
+      .to(
+        cards,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "-=0.5",
+      );
+
+    // vCard download functionality
+    const downloadBtn = document.getElementById("download-vcard");
+    if (downloadBtn) {
+      downloadBtn.addEventListener("click", () => {
+        const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Fernando Gonzalez Davalos
+N:Gonzalez Davalos;Fernando;;;
+ORG:THIRD Dev Studio
+TEL;TYPE=CELL:+5213338153789
+EMAIL:hola@thirdstudio.tech
+END:VCARD`;
+
+        const blob = new Blob([vCardData], { type: "text/vcard" });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "Fernando_Gonzalez_Davalos_Contact.vcf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      });
+    }
+  });
+</script>

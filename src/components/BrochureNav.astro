@@ -1,0 +1,135 @@
+---
+import Nav from "./Nav.astro";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+---
+
+<header class="brochure-header">
+  <div class="brochure-header-container">
+    <a href={locale === "es" ? "/" : "/en/"} class="brochure-logo-link">
+      <img src="/assets/img/logo.webp" alt="Third" class="brochure-logo" />
+    </a>
+
+    <div class="brochure-nav-wrapper">
+      <Nav locale={locale} />
+      <div class="brochure-language-wrapper">
+        <LanguageSwitcher currentLocale={locale} />
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .brochure-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 115;
+    padding: 20px 5vw;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.7) 50%,
+      transparent 100%
+    );
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .brochure-header.scrolled {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 15px 5vw;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .brochure-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+  .brochure-logo-link {
+    display: block;
+    transition: transform 0.3s ease;
+    z-index: 121;
+    position: relative;
+  }
+
+  .brochure-logo-link:hover {
+    transform: scale(1.05);
+  }
+
+  .brochure-logo {
+    height: 40px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.3));
+  }
+
+  .brochure-nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .brochure-language-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 1024px) {
+    .brochure-header {
+      padding: 15px 5vw;
+      z-index: 115;
+    }
+
+    .brochure-logo {
+      height: 32px;
+    }
+
+    .brochure-nav-wrapper {
+      gap: 15px;
+    }
+
+    /* Hide desktop language switcher on mobile - it's in the mobile menu */
+    .brochure-language-wrapper {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function initBrochureHeader() {
+    const header = document.querySelector(".brochure-header");
+    if (!header) return;
+
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > 100) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+
+      lastScroll = currentScroll;
+    });
+  }
+
+  // Run on initial load
+  initBrochureHeader();
+
+  // Run on view transitions if enabled
+  document.addEventListener("astro:after-swap", initBrochureHeader);
+</script>

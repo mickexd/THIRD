@@ -1,0 +1,314 @@
+---
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+
+const translations = await import(`../locales/${locale}.json`);
+const t = translations.default;
+
+const steps = t.brochure.methodology.steps.map(
+  (
+    step: { number: string; title: string; description: string },
+    index: number,
+  ) => ({
+    ...step,
+    accentColor:
+      index === 0
+        ? "#a855f7"
+        : index === 1
+          ? "#3b82f6"
+          : index === 2
+            ? "#06b6d4"
+            : index === 3
+              ? "#10b981"
+              : "#ec4899",
+  }),
+);
+---
+
+<section class="methodology" id="methodology-section">
+  <div class="methodology-container">
+    <div class="section-header">
+      <h2 class="reveal-text" data-t="brochure.methodology.sectionTitle">
+        {t.brochure.methodology.sectionTitle}
+      </h2>
+      <div class="header-line"></div>
+      <p class="section-intro" data-t="brochure.methodology.sectionIntro">
+        {t.brochure.methodology.sectionIntro}
+      </p>
+    </div>
+
+    <div class="steps-grid">
+      {
+        steps.map(
+          (
+            step: {
+              number: string;
+              title: string;
+              description: string;
+              accentColor: string;
+            },
+            index: number,
+          ) => (
+            <div class="step-card" data-step={index}>
+              <span class="step-number">{step.number}</span>
+              <h3
+                class="step-title"
+                data-t={`brochure.methodology.steps.${index}.title`}
+              >
+                {step.title}
+              </h3>
+              <p
+                class="step-description"
+                data-t={`brochure.methodology.steps.${index}.description`}
+              >
+                {step.description}
+              </p>
+              <div class="card-bg" style={`background: ${step.accentColor}`} />
+            </div>
+          ),
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .methodology {
+    position: relative;
+    width: 100%;
+    background-color: #0a0a0a;
+    padding: 15vh 5vw;
+    overflow: hidden;
+  }
+
+  .methodology-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 8vh;
+    text-align: left;
+  }
+
+  .section-header h2 {
+    font-size: clamp(3rem, 8vw, 10rem);
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-family: "Inter", system-ui, sans-serif;
+    letter-spacing: -0.04em;
+  }
+
+  .header-line {
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #a855f7 0%, #ec4899 100%);
+    margin-bottom: 30px;
+  }
+
+  .section-intro {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 700px;
+    line-height: 1.6;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .step-card {
+    position: relative;
+    height: 280px;
+    padding: 30px;
+    background-color: #111111;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
+  }
+
+  .step-card:hover .card-bg {
+    transform: scaleY(1);
+  }
+
+  .step-number {
+    font-family: "Geist Mono", "Fira Code", monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+  }
+
+  .step-card[data-step="0"] .step-number {
+    color: #a855f7;
+  }
+
+  .step-card[data-step="1"] .step-number {
+    color: #3b82f6;
+  }
+
+  .step-card[data-step="2"] .step-number {
+    color: #06b6d4;
+  }
+
+  .step-card[data-step="3"] .step-number {
+    color: #10b981;
+  }
+
+  .step-card[data-step="4"] .step-number {
+    color: #ec4899;
+  }
+
+  .step-card:hover .step-number {
+    color: #ffffff;
+  }
+
+  .step-title {
+    font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 15px 0;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+    line-height: 1.3;
+  }
+
+  .step-description {
+    font-size: clamp(0.9rem, 1.1vw, 1rem);
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+  }
+
+  .step-card:hover .step-description {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  @media (max-width: 1200px) {
+    .steps-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .steps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .methodology {
+      padding: 10vh 5vw;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+    }
+
+    .step-card {
+      height: 220px;
+      padding: 25px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".methodology");
+    if (!section) return;
+
+    const header = section.querySelector(".section-header h2");
+    const headerLine = section.querySelector(".header-line");
+    const intro = section.querySelector(".section-intro");
+    const cards = section.querySelectorAll(".step-card");
+
+    gsap.set(header, { y: 100, opacity: 0 });
+    gsap.set(headerLine, { width: 0 });
+    gsap.set(intro, { y: 30, opacity: 0 });
+    gsap.set(cards, { y: 80, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.to(header, {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "expo.out",
+    })
+      .to(
+        headerLine,
+        {
+          width: "200px",
+          duration: 1.5,
+          ease: "power4.inOut",
+        },
+        "-=0.8",
+      )
+      .to(
+        intro,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=1",
+      )
+      .to(
+        cards,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+        },
+        "-=0.5",
+      );
+  });
+</script>

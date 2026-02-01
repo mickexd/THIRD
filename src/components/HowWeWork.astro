@@ -1,0 +1,381 @@
+---
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+
+// Import translations
+const translations = await import(`../locales/${locale}.json`);
+const t = translations.default;
+
+const pillars = [
+  {
+    number: t.howWeWork.pillar1.number,
+    title: t.howWeWork.pillar1.title,
+    description: t.howWeWork.pillar1.description,
+    color: "tech",
+  },
+  {
+    number: t.howWeWork.pillar2.number,
+    title: t.howWeWork.pillar2.title,
+    description: t.howWeWork.pillar2.description,
+    color: "business",
+  },
+  {
+    number: t.howWeWork.pillar3.number,
+    title: t.howWeWork.pillar3.title,
+    description: t.howWeWork.pillar3.description,
+    color: "legal",
+  },
+];
+---
+
+<section class="how-we-work" id="how-we-work-section">
+  <div class="how-we-work-container">
+    <div class="how-we-work-header">
+      <h2 class="reveal-text" data-t="howWeWork.sectionTitle">
+        {t.howWeWork.sectionTitle}
+      </h2>
+      <div class="header-line"></div>
+      <p class="section-intro" data-t="howWeWork.sectionIntro">
+        {t.howWeWork.sectionIntro}
+      </p>
+    </div>
+
+    <div class="pillars-grid">
+      {
+        pillars.map((pillar, index) => (
+          <div class="pillar-card" data-pillar={pillar.color}>
+            <div class="pillar-content">
+              <span
+                class="pillar-number"
+                data-t={`howWeWork.pillar${index + 1}.number`}
+              >
+                {pillar.number}
+              </span>
+              <h3
+                class="pillar-title"
+                data-t={`howWeWork.pillar${index + 1}.title`}
+              >
+                {pillar.title}
+              </h3>
+              <p
+                class="pillar-description"
+                data-t={`howWeWork.pillar${index + 1}.description`}
+              >
+                {pillar.description}
+              </p>
+            </div>
+            <div class="pillar-bg" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-we-work {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0a0a0a;
+    padding: 15vh 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .how-we-work-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .how-we-work-header {
+    margin-bottom: 10vh;
+    text-align: left;
+  }
+
+  .how-we-work-header h2 {
+    font-size: clamp(3rem, 8vw, 10rem);
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-family: "Inter", system-ui, sans-serif;
+    letter-spacing: -0.04em;
+  }
+
+  .how-we-work-header .header-line {
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #9333ea 0%, #ec4899 100%);
+    margin-bottom: 30px;
+  }
+
+  .section-intro {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .pillar-card {
+    position: relative;
+    height: 45vh;
+    min-height: 400px;
+    padding: 60px 40px;
+    background-color: #111111;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.6s ease;
+  }
+
+  .pillar-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
+  }
+
+  .pillar-card:hover .pillar-bg {
+    transform: scaleY(1);
+  }
+
+  .pillar-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pillar-number {
+    font-family: "Geist Mono", "Fira Code", monospace;
+    font-size: 1rem;
+    color: #9333ea;
+    font-weight: 500;
+    margin-bottom: 30px;
+    display: block;
+    transition: color 0.4s ease;
+  }
+
+  .pillar-title {
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    transition: color 0.4s ease;
+  }
+
+  .pillar-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin-top: auto;
+    transition: color 0.4s ease;
+  }
+
+  .pillar-card:hover .pillar-number,
+  .pillar-card:hover .pillar-title,
+  .pillar-card:hover .pillar-description {
+    color: #ffffff;
+  }
+
+  /* 16:9 aspect ratio adjustments */
+  @media (min-width: 1201px) and (min-aspect-ratio: 1.77/1) and (max-aspect-ratio: 1.78/1) {
+    .how-we-work {
+      padding: 10vh 5vw;
+    }
+
+    .how-we-work-header {
+      margin-bottom: 5vh;
+    }
+
+    .pillar-card {
+      height: 48vh;
+      min-height: 340px;
+      padding: 40px 30px;
+    }
+
+    .pillar-description {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* 16:10 aspect ratio adjustments - more precise to avoid affecting 16:9 */
+  @media (min-width: 1201px) and (min-aspect-ratio: 1.59/1) and (max-aspect-ratio: 1.605/1) {
+    .how-we-work {
+      padding: 10vh 5vw;
+    }
+
+    .how-we-work-header {
+      margin-bottom: 6vh;
+    }
+
+    .pillar-card {
+      height: 50vh;
+      min-height: 350px;
+      padding: 40px 30px;
+    }
+  }
+
+  /* Common 16:10 resolutions - exclude 16:9 resolutions */
+  @media (min-width: 1280px) and (max-width: 1680px) and (min-height: 800px) and (max-height: 1050px) {
+    .how-we-work {
+      padding: 10vh 5vw;
+    }
+
+    .how-we-work-header {
+      margin-bottom: 6vh;
+    }
+
+    .pillar-card {
+      height: 50vh;
+      min-height: 350px;
+      padding: 40px 30px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pillar-card {
+      height: auto;
+      min-height: 300px;
+      padding: 40px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .how-we-work {
+      padding: 10vh 5vw;
+    }
+
+    .how-we-work-header h2 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".how-we-work");
+    if (!section) return;
+
+    const header = section.querySelector(".how-we-work-header h2");
+    const headerLine = section.querySelector(".header-line");
+    const intro = section.querySelector(".section-intro");
+    const cards = section.querySelectorAll(".pillar-card");
+
+    // Set initial states
+    gsap.set(header, { y: 100, opacity: 0 });
+    gsap.set(headerLine, { width: 0 });
+    gsap.set(intro, { y: 30, opacity: 0 });
+    gsap.set(cards, { y: 100, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    // Sophisticated entrance sequence
+    tl.to(header, {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "expo.out",
+    })
+      .to(
+        headerLine,
+        {
+          width: "200px",
+          duration: 1.5,
+          ease: "power4.inOut",
+        },
+        "-=0.8",
+      )
+      .to(
+        intro,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=1",
+      )
+      .to(
+        cards,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "-=0.5",
+      );
+
+    // Magnetic-like hover effect for the content inside cards
+    cards.forEach((card) => {
+      const content = card.querySelector(".pillar-content");
+
+      card.addEventListener("mousemove", (e: any) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        gsap.to(content, {
+          x: x * 0.05,
+          y: y * 0.05,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      });
+
+      card.addEventListener("mouseleave", () => {
+        gsap.to(content, {
+          x: 0,
+          y: 0,
+          duration: 0.6,
+          ease: "elastic.out(1, 0.3)",
+        });
+      });
+    });
+  });
+</script>

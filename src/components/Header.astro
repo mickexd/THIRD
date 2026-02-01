@@ -1,0 +1,100 @@
+---
+import Nav from "./Nav.astro";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const isBrochurePage = currentPath.includes("/brochure");
+---
+
+{
+  !isBrochurePage && (
+    <header class="header-fixed">
+      <div class="header-container">
+        <a href={locale === "es" ? "/" : "/en/"} class="logo-link">
+          <img src="/assets/img/logo.webp" alt="Third" class="logo" />
+        </a>
+
+        <div class="nav-wrapper">
+          <Nav locale={locale} />
+          <div class="language-wrapper">
+            <LanguageSwitcher currentLocale={locale} />
+          </div>
+        </div>
+      </div>
+    </header>
+  )
+}
+
+<style>
+  .header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 115;
+    padding: 20px 5vw;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8) 0%,
+      transparent 100%
+    );
+    backdrop-filter: blur(10px);
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+  .logo-link {
+    display: block;
+    z-index: 121;
+    position: relative;
+  }
+
+  .logo {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .language-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 1024px) {
+    .header-fixed {
+      padding: 15px 5vw;
+      z-index: 115;
+    }
+
+    .logo {
+      height: 32px;
+    }
+
+    .nav-wrapper {
+      gap: 15px;
+    }
+
+    /* Hide desktop language switcher on mobile - it's in the mobile menu */
+    .language-wrapper {
+      display: none;
+    }
+  }
+</style>

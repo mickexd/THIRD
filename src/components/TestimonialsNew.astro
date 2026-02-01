@@ -1,0 +1,163 @@
+---
+import Testimonials from "./Testimonials.astro";
+
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+
+const translations = await import(`../locales/${locale}.json`);
+const t = translations.default;
+---
+
+<section class="testimonials" id="testimonials-section">
+  <div class="testimonials-container">
+    <div class="testimonials-header">
+      <h2 class="reveal-text" data-t="testimonials.sectionTitle">
+        {t.testimonials.sectionTitle}
+      </h2>
+      <div class="header-line"></div>
+      <p class="section-intro" data-t="testimonials.sectionIntro">
+        {t.testimonials.sectionIntro}
+      </p>
+    </div>
+
+    <div class="testimonials-content">
+      <Testimonials locale={locale} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    background-color: #0a0a0a;
+    padding: 15vh 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .testimonials-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .testimonials-header {
+    margin-bottom: 8vh;
+    text-align: left;
+  }
+
+  .testimonials-header h2 {
+    font-size: clamp(3rem, 8vw, 10rem);
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-family: "Inter", system-ui, sans-serif;
+    letter-spacing: -0.04em;
+  }
+
+  .testimonials-header .header-line {
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #9333ea 0%, #f964bf 100%);
+    margin-bottom: 30px;
+  }
+
+  .section-intro {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  .testimonials-content {
+    position: relative;
+  }
+
+  @media (max-width: 900px) {
+    .testimonials {
+      padding: 10vh 5vw;
+    }
+
+    .testimonials-header h2 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initAnimations() {
+    const section = document.querySelector(".testimonials");
+    if (!section) return;
+
+    const header = section.querySelector(".testimonials-header h2");
+    const headerLine = section.querySelector(".header-line");
+    const intro = section.querySelector(".section-intro");
+    const content = section.querySelector(".testimonials-content");
+
+    gsap.set(header, { y: 100, opacity: 0 });
+    gsap.set(headerLine, { width: 0 });
+    gsap.set(intro, { y: 30, opacity: 0 });
+    gsap.set(content, { y: 50, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.to(header, {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "expo.out",
+    })
+      .to(
+        headerLine,
+        {
+          width: "200px",
+          duration: 1.5,
+          ease: "power4.inOut",
+        },
+        "-=0.8",
+      )
+      .to(
+        intro,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=1",
+      )
+      .to(
+        content,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.5",
+      );
+  }
+
+  document.addEventListener("DOMContentLoaded", initAnimations);
+  document.addEventListener("astro:after-swap", initAnimations);
+</script>

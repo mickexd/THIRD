@@ -1,0 +1,134 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title,
+  description = "Third Studio specializes in immersive VR experiences, architectural visualization, and digital innovation. We transform your ideas into reality through cutting-edge technology.",
+  image = "https://thirdstudio.tech/assets/img/logo.webp",
+  canonicalURL = Astro.url.href,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Third Studio specializes in immersive VR experiences, architectural visualization, and digital innovation. We transform your ideas into reality through cutting-edge technology."
+    />
+    <meta
+      name="keywords"
+      content="VR, Virtual Reality, Architectural Visualization, Digital Studio, Innovation, 3D Tours, Third Studio, Real Estate VR, Industrial VR"
+    />
+    <meta name="author" content="Third Studio" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <link rel="icon" type="image/png" href="/assets/img/logo-white.webp" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://thirdstudio.tech/" />
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="Third Studio specializes in immersive VR experiences, architectural visualization, and digital innovation."
+    />
+    <meta
+      property="og:image"
+      content="https://thirdstudio.tech/assets/img/logo.webp"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://thirdstudio.tech/" />
+    <meta property="twitter:title" content={title} />
+    <meta
+      property="twitter:description"
+      content="Third Studio specializes in immersive VR experiences, architectural visualization, and digital innovation."
+    />
+    <meta
+      property="twitter:image"
+      content="https://thirdstudio.tech/assets/img/logo.webp"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://thirdstudio.tech/" />
+    <script is:inline>
+      // Apply saved language as early as possible to prevent flash of wrong language
+      (function () {
+        const savedLang = localStorage.getItem("preferredLang");
+        if (savedLang) {
+          document.documentElement.lang = savedLang;
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import "tailwindcss";
+  @import "../styles/aspect-ratio-fixes.css";
+
+  /* Smooth scrolling for all devices */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    -webkit-overflow-scrolling: touch;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Fix for iOS viewport issues */
+  @supports (-webkit-touch-callout: none) {
+    html {
+      height: -webkit-fill-available;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+    }
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: #9333ea;
+    color: #ffffff;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #333333;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9333ea;
+  }
+</style>

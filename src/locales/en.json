@@ -1,0 +1,353 @@
+{
+  "nav": {
+    "services": "Services",
+    "howWeWork": "How We Work",
+    "about": "About",
+    "portfolio": "Portfolio",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "brochure": "Brochure"
+  },
+  "hero": {
+    "headline": "Your idea. Our execution.",
+    "subheadline": "We develop software, structure your business model, and cover the legal framework. Regardless of your project size — from a simple website to a complete product — we have what you need.",
+    "cta": "Let's talk about your project"
+  },
+  "howWeWork": {
+    "sectionTitle": "How We Work",
+    "sectionIntro": "Every project is different. First, we understand what you really need, then we execute exactly that.",
+    "pillar1": {
+      "number": "01",
+      "title": "Technology",
+      "description": "We develop custom software: websites, applications, platforms, AI integrations, and more. We use the stack that best fits your project."
+    },
+    "pillar2": {
+      "number": "02",
+      "title": "Business",
+      "description": "We validate your business model, accompany you in strategy, and if needed, in fundraising."
+    },
+    "pillar3": {
+      "number": "03",
+      "title": "Legal",
+      "description": "Corporate structure, contracts, compliance — we cover the legal framework so your project is protected from day one."
+    }
+  },
+  "services": {
+    "sectionTitle": "What We Cover",
+    "sectionIntro": "From a consultation to a complete product. This is everything we can do for your project.",
+    "items": [
+      {
+        "title": "Software Development",
+        "description": "Web applications, mobile apps, platforms, and custom systems."
+      },
+      {
+        "title": "Web Development",
+        "description": "Professional, fast, and conversion-oriented websites."
+      },
+      {
+        "title": "AI Automation",
+        "description": "We integrate artificial intelligence into your processes to reduce errors and increase efficiency."
+      },
+      {
+        "title": "Strategic Consulting",
+        "description": "We analyze your idea or business and give you a clear roadmap."
+      },
+      {
+        "title": "Mobile Applications",
+        "description": "Native or hybrid apps, designed for your users."
+      },
+      {
+        "title": "API Development",
+        "description": "Robust and scalable integrations between systems."
+      },
+      {
+        "title": "AR/VR Experiences",
+        "description": "When your project requires it, we create immersive augmented and virtual reality experiences."
+      },
+      {
+        "title": "Fundraising",
+        "description": "We accompany you in the process of connecting with investors and preparing your pitch."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "What Our Clients Say",
+    "sectionIntro": "Discover the transformative experiences we've created with our clients and how we've driven their digital success.",
+    "items": [
+      {
+        "message": "The implementation of the new API was flawless. The development team exceeded our expectations, delivering a robust and scalable product in record time. Excellent work!",
+        "name": "Sofía Hernández",
+        "email": "sofiadev@outlook.com"
+      },
+      {
+        "message": "AI automation has revolutionized our internal processes. We've reduced manual errors by 70% and efficiency has improved drastically. A worthwhile investment!",
+        "name": "Ricardo Gómez",
+        "email": "ricardo_gomez87@yahoo.com"
+      },
+      {
+        "message": "The mobile app development was a resounding success. The interface is intuitive and the performance is exceptional. Our users are delighted with the new experience.",
+        "name": "Valeria Torres",
+        "email": "valeriatc@gmail.com"
+      },
+      {
+        "message": "Integrating AI into our customer management system has been fundamental. Now we can predict our customers' needs with amazing accuracy, improving satisfaction and sales.",
+        "name": "Mariana Díaz",
+        "email": "mari_diaz@outlook.com"
+      },
+      {
+        "message": "The marketing automation solution we implemented has exceeded all our expectations. We've achieved a 40% increase in lead generation and significant optimization of our campaigns.",
+        "name": "Luis Alberto Ramírez",
+        "email": "luis.ramirez.mkt@gmail.com"
+      }
+    ]
+  },
+  "founders": {
+    "sectionTitle": "Meet the Founders",
+    "sectionIntro": "The visionaries behind the digital transformation that drives the future",
+    "cesar": {
+      "name": "César Michel Bailón Esquivel",
+      "bio": "Passionate IT professional with over 18 years of diverse technology experience, specialized in ITSM processes, technical support, tech ops, and software development. Expert in driving technological excellence and innovation within dynamic organizations.",
+      "experience": "18+ years in technology, ITSM (IT Service Management) and tech ops",
+      "specialization": "AI/ML, AR/VR, Software development and video games",
+      "processes": "ITSM, ITIL-based Support, Tech Operations",
+      "location": "Guadalajara, Mexico"
+    },
+    "fernando": {
+      "name": "Fernando González Dávalos",
+      "role": "Business Strategy",
+      "bio": "Co-Founder of Ideas2Work | Certified Strategic Consultant. Consultant with experience ranging from SMEs to the aerospace industry, specialized in strategy, digital transformation, and agile execution. Trained in Enterprise Architecture, TOGAF, ITIL, PMO, and agile methodologies.",
+      "specialization": "Strategy, Digital Transformation and Agile Execution",
+      "experience": "From SMEs to aerospace industry",
+      "certifications": "TOGAF, ITIL, PMO, Cisco Business Architecture",
+      "education": "IPADE, EGADE, Erasmus, University of Virginia"
+    }
+  },
+  "techStack": {
+    "title": "Technologies That Power This Site",
+    "description": "Our website is built with modern, reliable technologies that ensure a fast and secure experience.",
+    "button": "Technologies Used"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Have a project in mind? Let's talk.",
+    "saveContact": "Save Contact",
+    "downloadVCard": "Download vCard",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send Message"
+    }
+  },
+  "footer": {
+    "copyright": "All rights reserved.",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "lastUpdated": "Last updated: ${currentYear}",
+    "termsContent": {
+      "section1": {
+        "title": "1. Acceptance of Terms",
+        "content": "By accessing and using this website, you agree to be bound by these terms and conditions of use. If you do not agree with any of these terms, please do not use our site."
+      },
+      "section2": {
+        "title": "2. Use of the Site",
+        "content": "The content of this site is for your general information and personal use only. It is subject to change without notice."
+      },
+      "section3": {
+        "title": "3. Intellectual Property",
+        "content": "This website contains material which is owned by or licensed to Third Studio. This material includes, but is not limited to, the design, layout, graphics, and logos."
+      },
+      "section4": {
+        "title": "4. Limitation of Liability",
+        "content": "Third Studio shall not be liable for any direct, indirect, incidental, special, or consequential damages resulting from the use or inability to use this website."
+      },
+      "section5": {
+        "title": "5. Governing Law",
+        "content": "These terms and conditions are governed by the laws of Mexico. Any dispute related to these terms shall be subject to the exclusive jurisdiction of the courts of Guadalajara, Jalisco."
+      },
+      "section6": {
+        "title": "6. Changes to Terms",
+        "content": "We reserve the right to modify these terms at any time. Changes will take effect immediately upon posting to the site."
+      }
+    },
+    "privacyContent": {
+      "section1": {
+        "title": "1. Information We Collect",
+        "content": "We may collect personal information such as your name, email address, and phone number when you contact us through our contact form or email."
+      },
+      "section2": {
+        "title": "2. Use of Information",
+        "content": "We use the collected information to respond to your inquiries, provide requested services, and improve our service offerings."
+      },
+      "section3": {
+        "title": "3. Data Protection",
+        "content": "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction."
+      },
+      "section4": {
+        "title": "4. Information Sharing",
+        "content": "We do not sell, trade, or transfer your personal information to third parties without your consent, except when necessary to provide requested services or comply with legal obligations."
+      },
+      "section5": {
+        "title": "5. Cookies and Similar Technologies",
+        "content": "Our site may use cookies to improve the user experience. You can configure your browser to refuse cookies, but this may affect site functionality."
+      },
+      "section6": {
+        "title": "6. Your Rights",
+        "content": "You have the right to access, rectify, cancel, or oppose the processing of your personal data. To exercise these rights, contact us at hola@thirdstudio.tech."
+      },
+      "section7": {
+        "title": "7. Changes to this Notice",
+        "content": "We may update this privacy notice periodically. We recommend reviewing this page occasionally to stay informed about any changes."
+      }
+    }
+  },
+  "language": {
+    "switch": "Cambiar a Español",
+    "current": "English"
+  },
+  "common": {
+    "navigation": "Navigation",
+    "legal": "Legal",
+    "contact": "Contact",
+    "home": "Home",
+    "pillars": "Pillars",
+    "industries": "Industries"
+  },
+  "brochure": {
+    "hero": {
+      "tagline": "Technology that transforms realities"
+    },
+    "whatWeDo": {
+      "sectionTitle": "What do we do at Third?",
+      "intro1": "We create digital solutions that change the way people and companies interact with the world.",
+      "intro2": "From virtual tours and simulators to artificial intelligence assistants and operational software, our work has a clear objective: to help you move forward with useful, precise, and powerful technology.",
+      "highlight": "It's not just about programming. It's about transforming.",
+      "virtualTours": {
+        "title": "Virtual Tours"
+      },
+      "aiAssistant": {
+        "title": "AI Assistant"
+      }
+    },
+    "whyWeDoIt": {
+      "sectionTitle": "Why do we do it?",
+      "intro1": "Because we understand that technology is no longer optional. It's the foundation to compete, grow, and adapt to a world that doesn't wait.",
+      "intro2": "At Third, we help organizations redesign processes, train their people, automate their operations, and connect with their customers in more effective and memorable ways.",
+      "transformationTitle": "Digital Transformation"
+    },
+    "pillars": {
+      "sectionTitle": "Our 4 Pillars",
+      "pillar1": {
+        "number": "01",
+        "title": "Software & Digital Transformation",
+        "description": "We develop robust, mobile, and scalable platforms tailored to your operation. We also guide you on your digital transformation journey with proven methodologies and strategic vision.",
+        "examples": "Industrial ERPs, health platforms, real estate CRMs, citizen portals, cloud migrations, ITIL compliance, and more."
+      },
+      "pillar2": {
+        "number": "02",
+        "title": "Artificial Intelligence Agents",
+        "description": "We create assistants and bots that automate tasks, serve customers, analyze information, and make decisions. We do this with advanced AI frameworks, integrations with existing systems, and multichannel conversational models.",
+        "examples": "Recruitment automation, customer service, medical triage, product recommenders, legal assistants, financial dashboards."
+      },
+      "pillar3": {
+        "number": "03",
+        "title": "Consulting & Fundraising",
+        "description": "We accompany you from idea validation to investor connections. We analyze your business model, prepare your pitch, and guide you through the fundraising process.",
+        "examples": "Business model validation, pitch deck preparation, investor connections, growth strategy, market analysis."
+      },
+      "pillar4": {
+        "number": "04",
+        "title": "Turnkey Solutions",
+        "description": "We deliver complete end-to-end projects: from concept to launch. We handle technology, design, infrastructure, and deployment.",
+        "examples": "Complete startups, enterprise platforms, immersive AR/VR experiences, integrated systems, ready-to-operate digital products."
+      }
+    },
+    "methodology": {
+      "sectionTitle": "How We Work",
+      "sectionIntro": "Our methodology is direct, agile, and collaborative",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Deep Diagnosis",
+          "description": "We understand your challenges."
+        },
+        {
+          "number": "02",
+          "title": "Functional & Visual Design",
+          "description": "Architecture, UX, and clear flows."
+        },
+        {
+          "number": "03",
+          "title": "Modular Development",
+          "description": "We iterate with speed and order."
+        },
+        {
+          "number": "04",
+          "title": "Validation & Deployment",
+          "description": "We test, document, and launch."
+        },
+        {
+          "number": "05",
+          "title": "Constant Optimization",
+          "description": "We evolve with you."
+        }
+      ]
+    },
+    "industries": {
+      "sectionTitle": "Who Do We Help?",
+      "sectionIntro": "Companies ready to take the next step. We know their challenges and speak their language:",
+      "cta": "If you have a complex operation, people-intensive or process-intensive, that's where we shine.",
+      "items": [
+        {
+          "title": "Real Estate & Construction",
+          "description": "They need to show, sell, and differentiate. We create immersive virtual tours and platforms that close sales."
+        },
+        {
+          "title": "Industries with Factory Operations",
+          "description": "We train operators in virtual reality simulating real scenarios (heat, vibration, risk), preventing accidents and accelerating learning."
+        },
+        {
+          "title": "Retailers & Commercial Chains",
+          "description": "We automate customer service, recommendation systems, inventory support, and more, with intelligent agents and proprietary platforms."
+        },
+        {
+          "title": "Event & Exhibition Organizers",
+          "description": "We integrate technology to turn physical or virtual events into unforgettable experiences, with AI assistants and interactive content."
+        }
+      ],
+      "transformation": {
+        "title": "Comprehensive Digital Transformation",
+        "intro": "At Third Studio, we understand that digital transformation goes beyond simply adopting new technologies.",
+        "pillars": [
+          {
+            "title": "Process Redesign",
+            "description": "We apply agile methodologies and TOGAF-certified enterprise architecture, optimizing each workflow to maximize operational efficiency."
+          },
+          {
+            "title": "Infrastructure Migration",
+            "description": "Strategic approach that guarantees business continuity, implementing modern cloud solutions and scalable architectures."
+          },
+          {
+            "title": "Legacy System Modernization",
+            "description": "We integrate cutting-edge technologies such as Artificial Intelligence, Machine Learning, Virtual and Augmented Reality."
+          },
+          {
+            "title": "Cultural Change Support",
+            "description": "True digital transformation requires more than technology: it needs prepared people. We develop technology adoption strategies."
+          }
+        ],
+        "footer": "We guarantee a successful transition to a digital culture"
+      }
+    },
+    "contact": {
+      "sectionTitle": "What if we start today?",
+      "intro": "Your vision needs a partner who understands it and executes it with precision. We turn technology into solutions that are used, work, and generate value.",
+      "cardTitle": "Contact Us",
+      "email": "hola@thirdstudio.tech",
+      "phone": "+52 1 333 815 3789",
+      "website": "www.thirdstudio.tech",
+      "downloadContact": "Download Contact Information"
+    }
+  }
+}

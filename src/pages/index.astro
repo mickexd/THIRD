@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import HowWeWork from "../components/HowWeWork.astro";
+import ServicesNew from "../components/ServicesNew.astro";
+import TestimonialsNew from "../components/TestimonialsNew.astro";
+import Founders from "../components/Founders.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import BackToTop from "../components/BackToTop.astro";
+
+const currentPath = Astro.url.pathname;
+const locale = currentPath.startsWith("/en") ? "en" : "es";
+---
+
+<BaseLayout
+  title={locale === "es"
+    ? "Third Studio - Soluciones Digitales Integrales | Innovación y Consultoría"
+    : "Third Studio - All-in-One Digital Solutions | Innovation & Consulting"}
+  description={locale === "es"
+    ? "Expertos en innovación digital, consultoría tecnológica y soluciones integrales. Transformamos negocios con tecnología de vanguardia, incluyendo VR/AR, desarrollo web y automatización."
+    : "Experts in digital innovation, technology consulting, and comprehensive solutions. We transform businesses with cutting-edge technology, including VR/AR, web development, and automation."}
+>
+  {/* Structured Data for SEO */}
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Third Studio",
+      url: "https://thirdstudio.tech",
+      logo: "https://thirdstudio.tech/assets/img/logo.webp",
+      description:
+        locale === "es"
+          ? "Empresa de innovación digital y consultoría tecnológica. Ofrecemos soluciones integrales que incluyen desarrollo web, automatización, inteligencia artificial y experiencias inmersivas VR/AR."
+          : "Digital innovation and technology consulting company. We provide comprehensive solutions including web development, automation, artificial intelligence, and immersive VR/AR experiences.",
+      sameAs: [
+        "https://www.instagram.com/thirdstudio.tech",
+        "https://www.linkedin.com/company/thirdstudio",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: "hello@thirdstudio.tech",
+      },
+    })}
+  />
+  <div class="site-wrapper">
+    <Header locale={locale} />
+
+    <main>
+      <Hero locale={locale} />
+      <HowWeWork locale={locale} />
+      <ServicesNew locale={locale} />
+      <TestimonialsNew locale={locale} />
+      <Founders locale={locale} />
+      <Contact locale={locale} />
+    </main>
+
+    <Footer locale={locale} />
+
+    <BackToTop />
+  </div>
+</BaseLayout>
+
+<style>
+  .site-wrapper {
+    background-color: #0a0a0a;
+    min-height: 100vh;
+  }
+</style>

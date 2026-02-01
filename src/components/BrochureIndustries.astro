@@ -1,0 +1,370 @@
+---
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+
+const translations = await import(`../locales/${locale}.json`);
+const t = translations.default;
+
+const industries = [
+  {
+    title: t.brochure.industries.items[0].title,
+    description: t.brochure.industries.items[0].description,
+    image: "/assets/img/brochure/arquitectos.webp",
+    accentColor: "#3b82f6",
+    number: "01",
+  },
+  {
+    title: t.brochure.industries.items[1].title,
+    description: t.brochure.industries.items[1].description,
+    image: "/assets/img/brochure/industriaFabril.webp",
+    accentColor: "#a855f7",
+    number: "02",
+  },
+  {
+    title: t.brochure.industries.items[2].title,
+    description: t.brochure.industries.items[2].description,
+    image: "/assets/img/brochure/retail.webp",
+    accentColor: "#ec4899",
+    number: "03",
+  },
+  {
+    title: t.brochure.industries.items[3].title,
+    description: t.brochure.industries.items[3].description,
+    image: "/assets/img/brochure/eventos.webp",
+    accentColor: "#10b981",
+    number: "04",
+  },
+];
+---
+
+<section class="industries" id="industries-section">
+  <div class="industries-container">
+    <div class="section-header">
+      <h2 class="reveal-text" data-t="brochure.industries.sectionTitle">
+        {t.brochure.industries.sectionTitle}
+      </h2>
+      <div class="header-line"></div>
+      <p class="section-intro" data-t="brochure.industries.sectionIntro">
+        {t.brochure.industries.sectionIntro}
+      </p>
+    </div>
+
+    <div class="industries-grid">
+      {
+        industries.map((industry, index) => (
+          <div class="industry-card" data-industry={index}>
+            <span class="industry-number">{industry.number}</span>
+            <h3
+              class="industry-title"
+              data-t={`brochure.industries.items.${index}.title`}
+            >
+              {industry.title}
+            </h3>
+            <p
+              class="industry-description"
+              data-t={`brochure.industries.items.${index}.description`}
+            >
+              {industry.description}
+            </p>
+            <div class="industry-image">
+              <img src={industry.image} alt={industry.title} />
+            </div>
+            <div
+              class="card-bg"
+              style={`background: ${industry.accentColor}`}
+            />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="cta-banner">
+      <p class="cta-text" data-t="brochure.industries.cta">
+        {t.brochure.industries.cta}
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .industries {
+    position: relative;
+    width: 100%;
+    background-color: #0a0a0a;
+    padding: 15vh 5vw;
+    overflow: hidden;
+  }
+
+  .industries-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 8vh;
+    text-align: left;
+  }
+
+  .section-header h2 {
+    font-size: clamp(3rem, 8vw, 10rem);
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-family: "Inter", system-ui, sans-serif;
+    letter-spacing: -0.04em;
+  }
+
+  .header-line {
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6 0%, #a855f7 100%);
+    margin-bottom: 30px;
+  }
+
+  .section-intro {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 900px;
+    line-height: 1.6;
+  }
+
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 6vh;
+  }
+
+  .industry-card {
+    position: relative;
+    min-height: 620px;
+    padding: 40px;
+    background-color: #111111;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
+  }
+
+  .industry-card:hover .card-bg {
+    transform: scaleY(1);
+  }
+
+  .industry-number {
+    font-family: "Geist Mono", "Fira Code", monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+  }
+
+  .industry-card[data-industry="0"] .industry-number {
+    color: #3b82f6;
+  }
+
+  .industry-card[data-industry="1"] .industry-number {
+    color: #a855f7;
+  }
+
+  .industry-card[data-industry="2"] .industry-number {
+    color: #ec4899;
+  }
+
+  .industry-card[data-industry="3"] .industry-number {
+    color: #10b981;
+  }
+
+  .industry-card:hover .industry-number {
+    color: #ffffff;
+  }
+
+  .industry-title {
+    font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 20px 0 15px;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+    line-height: 1.3;
+  }
+
+  .industry-description {
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+  }
+
+  .industry-card:hover .industry-description {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .industry-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .industry-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    transition: all 0.6s ease;
+  }
+
+  .industry-card:hover .industry-image img {
+    opacity: 0.2;
+    transform: scale(1.05);
+  }
+
+  .cta-banner {
+    text-align: center;
+    padding: 2.5rem;
+    background: linear-gradient(
+      135deg,
+      rgba(168, 85, 247, 0.1) 0%,
+      rgba(236, 72, 153, 0.1) 100%
+    );
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 4px;
+  }
+
+  .cta-text {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 900px) {
+    .industries-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .industries {
+      padding: 10vh 5vw;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+    }
+
+    .industry-card {
+      min-height: 550px;
+      padding: 30px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".industries");
+    if (!section) return;
+
+    const header = section.querySelector(".section-header h2");
+    const headerLine = section.querySelector(".header-line");
+    const intro = section.querySelector(".section-intro");
+    const cards = section.querySelectorAll(".industry-card");
+    const ctaBanner = section.querySelector(".cta-banner");
+
+    gsap.set(header, { y: 100, opacity: 0 });
+    gsap.set(headerLine, { width: 0 });
+    gsap.set(intro, { y: 30, opacity: 0 });
+    gsap.set(cards, { y: 80, opacity: 0 });
+    gsap.set(ctaBanner, { y: 50, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.to(header, {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "expo.out",
+    })
+      .to(
+        headerLine,
+        {
+          width: "200px",
+          duration: 1.5,
+          ease: "power4.inOut",
+        },
+        "-=0.8",
+      )
+      .to(
+        intro,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=1",
+      )
+      .to(
+        cards,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "-=0.5",
+      )
+      .to(
+        ctaBanner,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+        },
+        "-=0.3",
+      );
+  });
+</script>

@@ -1,0 +1,303 @@
+---
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+
+const translations = await import(`../locales/${locale}.json`);
+const t = translations.default;
+---
+
+<section class="what-we-do" id="what-we-do-section">
+  <div class="what-we-do-container">
+    <div class="section-header">
+      <h2 class="reveal-text" data-t="brochure.whatWeDo.sectionTitle">
+        {t.brochure.whatWeDo.sectionTitle}
+      </h2>
+      <div class="header-line"></div>
+    </div>
+
+    <div class="intro-content">
+      <p class="intro-text" data-t="brochure.whatWeDo.intro1">
+        {t.brochure.whatWeDo.intro1}
+      </p>
+      <p class="intro-text" data-t="brochure.whatWeDo.intro2">
+        {t.brochure.whatWeDo.intro2}
+      </p>
+      <p class="highlight-text" data-t="brochure.whatWeDo.highlight">
+        {t.brochure.whatWeDo.highlight}
+      </p>
+    </div>
+
+    <div class="showcase-grid">
+      <div class="showcase-card" data-card="virtual">
+        <span class="card-number">01</span>
+        <h3 class="card-title" data-t="brochure.whatWeDo.virtualTours.title">
+          {t.brochure.whatWeDo.virtualTours.title}
+        </h3>
+        <div class="card-image">
+          <img
+            src="/assets/img/brochure/recorridos.webp"
+            alt={t.brochure.whatWeDo.virtualTours.title}
+          />
+        </div>
+        <div class="card-bg"></div>
+      </div>
+
+      <div class="showcase-card" data-card="ai">
+        <span class="card-number">02</span>
+        <h3 class="card-title" data-t="brochure.whatWeDo.aiAssistant.title">
+          {t.brochure.whatWeDo.aiAssistant.title}
+        </h3>
+        <div class="card-image">
+          <img
+            src="/assets/img/brochure/agenteIA.webp"
+            alt={t.brochure.whatWeDo.aiAssistant.title}
+          />
+        </div>
+        <div class="card-bg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .what-we-do {
+    position: relative;
+    width: 100%;
+    background-color: #111111;
+    padding: 15vh 5vw;
+    overflow: hidden;
+  }
+
+  .what-we-do-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 8vh;
+    text-align: left;
+  }
+
+  .section-header h2 {
+    font-size: clamp(3rem, 8vw, 10rem);
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-family: "Inter", system-ui, sans-serif;
+    letter-spacing: -0.04em;
+  }
+
+  .header-line {
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ec4899 0%, #a855f7 100%);
+    margin-bottom: 30px;
+  }
+
+  .intro-content {
+    max-width: 900px;
+    margin-bottom: 8vh;
+  }
+
+  .intro-text {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight-text {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 2rem;
+  }
+
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .showcase-card {
+    position: relative;
+    height: 600px;
+    padding: 40px;
+    background-color: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
+  }
+
+  .showcase-card[data-card="ai"] .card-bg {
+    background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+  }
+
+  .showcase-card:hover .card-bg {
+    transform: scaleY(1);
+  }
+
+  .card-number {
+    font-family: "Geist Mono", "Fira Code", monospace;
+    font-size: 1rem;
+    color: #a855f7;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+  }
+
+  .showcase-card[data-card="ai"] .card-number {
+    color: #ec4899;
+  }
+
+  .showcase-card:hover .card-number {
+    color: #ffffff;
+  }
+
+  .card-title {
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 20px 0;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+  }
+
+  .card-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: all 0.6s ease;
+  }
+
+  .showcase-card:hover .card-image img {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 900px) {
+    .showcase-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .showcase-card {
+      height: 550px;
+    }
+
+    .what-we-do {
+      padding: 10vh 5vw;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".what-we-do");
+    if (!section) return;
+
+    const header = section.querySelector(".section-header h2");
+    const headerLine = section.querySelector(".header-line");
+    const introTexts = section.querySelectorAll(".intro-text, .highlight-text");
+    const cards = section.querySelectorAll(".showcase-card");
+
+    gsap.set(header, { y: 100, opacity: 0 });
+    gsap.set(headerLine, { width: 0 });
+    gsap.set(introTexts, { y: 30, opacity: 0 });
+    gsap.set(cards, { y: 80, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.to(header, {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "expo.out",
+    })
+      .to(
+        headerLine,
+        {
+          width: "200px",
+          duration: 1.5,
+          ease: "power4.inOut",
+        },
+        "-=0.8",
+      )
+      .to(
+        introTexts,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power2.out",
+        },
+        "-=1",
+      )
+      .to(
+        cards,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "-=0.5",
+      );
+  });
+</script>
