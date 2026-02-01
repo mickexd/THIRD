@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BrochureNav from "../components/BrochureNav.astro";
+import BrochureHero from "../components/BrochureHero.astro";
+import BrochureWhatWeDo from "../components/BrochureWhatWeDo.astro";
+import BrochureWhyWeDoIt from "../components/BrochureWhyWeDoIt.astro";
+import BrochurePillars from "../components/BrochurePillars.astro";
+import BrochureMethodology from "../components/BrochureMethodology.astro";
+import BrochureIndustries from "../components/BrochureIndustries.astro";
+import BrochureContact from "../components/BrochureContact.astro";
+import Footer from "../components/Footer.astro";
+import BackToTop from "../components/BackToTop.astro";
+
+const currentPath = Astro.url.pathname;
+const locale = currentPath.startsWith("/en") ? "en" : "es";
+---
+
+<BaseLayout
+  title={locale === "es"
+    ? "THIRD STUDIO - Brochure Digital"
+    : "THIRD STUDIO - Digital Brochure"}
+  description={locale === "es"
+    ? "Explora nuestro brochure digital y descubre cómo Third Studio revoluciona la industria con VR, IA y visualización 3D."
+    : "Explore our digital brochure and discover how Third Studio revolutionizes the industry with VR, AI, and 3D visualization."}
+>
+  {/* Structured Data for Brochure Page */}
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name:
+        locale === "es"
+          ? "Brochure Digital - Third Studio"
+          : "Digital Brochure - Third Studio",
+      description:
+        locale === "es"
+          ? "Explora nuestro brochure digital y descubre cómo Third Studio revoluciona la industria con VR, IA y visualización 3D."
+          : "Explore our digital brochure and discover how Third Studio revolutionizes the industry with VR, AI, and 3D visualization.",
+      publisher: {
+        "@type": "Organization",
+        name: "Third Studio",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://thirdstudio.tech/assets/img/logo.webp",
+        },
+      },
+    })}
+  />
+  <div class="site-wrapper">
+    <BrochureNav locale={locale} />
+
+    <main>
+      <BrochureHero locale={locale} />
+      <BrochureWhatWeDo locale={locale} />
+      <BrochureWhyWeDoIt locale={locale} />
+      <BrochurePillars locale={locale} />
+      <BrochureMethodology locale={locale} />
+      <BrochureIndustries locale={locale} />
+      <BrochureContact locale={locale} />
+    </main>
+
+    <Footer locale={locale} />
+
+    <BackToTop />
+  </div>
+</BaseLayout>
+
+<style>
+  .site-wrapper {
+    background-color: #0a0a0a;
+    min-height: 100vh;
+  }
+</style>

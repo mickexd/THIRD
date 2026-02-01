@@ -1,0 +1,258 @@
+---
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+
+// Import translations
+const translations = await import(`../locales/${locale}.json`);
+const t = translations.default;
+---
+
+<section class="services" id="services-section">
+  <div class="services-container">
+    <div class="services-header">
+      <h2 class="reveal-text" data-t="services.sectionTitle">
+        {t.services.sectionTitle}
+      </h2>
+      <div class="header-line"></div>
+      <p class="section-intro" data-t="services.sectionIntro">
+        {t.services.sectionIntro}
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {
+        t.services.items.map(
+          (service: { title: string; description: string }, index: number) => (
+            <div class="service-item" data-index={index}>
+              <span class="service-number">0{index + 1}</span>
+              <h3
+                class="service-title"
+                data-t={`services.items.${index}.title`}
+              >
+                {service.title}
+              </h3>
+              <p
+                class="service-description"
+                data-t={`services.items.${index}.description`}
+              >
+                {service.description}
+              </p>
+              <div class="service-line" />
+            </div>
+          ),
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #111111;
+    padding: 15vh 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .services-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    margin-bottom: 10vh;
+    text-align: left;
+  }
+
+  .services-header h2 {
+    font-size: clamp(3rem, 8vw, 10rem);
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-family: "Inter", system-ui, sans-serif;
+    letter-spacing: -0.04em;
+  }
+
+  .services-header .header-line {
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ec4899 0%, #3b82f6 100%);
+    margin-bottom: 30px;
+  }
+
+  .section-intro {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .service-item {
+    position: relative;
+    padding: 40px;
+    background-color: #0a0a0a;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.4s ease;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-item:hover {
+    background-color: #1a1a1a;
+  }
+
+  .service-number {
+    font-family: "Geist Mono", "Fira Code", monospace;
+    font-size: 0.875rem;
+    color: #9333ea;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .service-title {
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .service-description {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+    margin-top: auto;
+  }
+
+  .service-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #9333ea 0%, #ec4899 100%);
+    transition: width 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .service-item:hover .service-line {
+    width: 100%;
+  }
+
+  @media (max-width: 1200px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services {
+      padding: 10vh 5vw;
+    }
+
+    .services-header h2 {
+      font-size: 2.5rem;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-item {
+      padding: 30px;
+      min-height: 200px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".services");
+    if (!section) return;
+
+    const header = section.querySelector(".services-header h2");
+    const headerLine = section.querySelector(".header-line");
+    const intro = section.querySelector(".section-intro");
+    const items = section.querySelectorAll(".service-item");
+
+    // Set initial states
+    gsap.set(header, { y: 100, opacity: 0 });
+    gsap.set(headerLine, { width: 0 });
+    gsap.set(intro, { y: 30, opacity: 0 });
+    gsap.set(items, { y: 60, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    // Entrance sequence
+    tl.to(header, {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "expo.out",
+    })
+      .to(
+        headerLine,
+        {
+          width: "200px",
+          duration: 1.5,
+          ease: "power4.inOut",
+        },
+        "-=0.8",
+      )
+      .to(
+        intro,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=1",
+      )
+      .to(
+        items,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: "power3.out",
+        },
+        "-=0.5",
+      );
+  });
+</script>

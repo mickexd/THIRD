@@ -1,0 +1,353 @@
+{
+  "nav": {
+    "services": "Servicios",
+    "howWeWork": "Cómo trabajamos",
+    "about": "Nosotros",
+    "portfolio": "Portafolio",
+    "privacy": "Aviso de privacidad",
+    "contact": "Contacto",
+    "brochure": "Brochure"
+  },
+  "hero": {
+    "headline": "Tu pones la idea. Nosotros la ejecutamos.",
+    "subheadline": "Desarrollamos software, estructuramos tu modelo de negocio y cubrimos el marco legal. Sin importar el tamaño de tu proyecto — desde un sitio web hasta un producto completo — tenemos lo que necesitas.",
+    "cta": "Hablemos de tu proyecto"
+  },
+  "howWeWork": {
+    "sectionTitle": "¿Cómo trabajamos?",
+    "sectionIntro": "Cada proyecto es diferente. Primero entendemos qué necesitas realmente, luego ejecutamos exactamente eso.",
+    "pillar1": {
+      "number": "01",
+      "title": "Tecnología",
+      "description": "Desarrollamos software a medida: sitios web, aplicaciones, plataformas, integraciones con IA, y más. Usamos el stack que mejor se adapte a tu proyecto."
+    },
+    "pillar2": {
+      "number": "02",
+      "title": "Negocio",
+      "description": "Validamos tu modelo de negocio, te acompañamos en estrategia, y si lo necesitas, en la búsqueda de financiamiento."
+    },
+    "pillar3": {
+      "number": "03",
+      "title": "Legal",
+      "description": "Estructura corporativa, contratos, compliance — cubrimos el marco legal para que tu proyecto esté protegido desde el día uno."
+    }
+  },
+  "services": {
+    "sectionTitle": "Lo que cubrimos",
+    "sectionIntro": "Desde una consulta hasta un producto completo. Esto es todo lo que podemos hacer por tu proyecto.",
+    "items": [
+      {
+        "title": "Desarrollo de Software",
+        "description": "Aplicaciones web, móviles, plataformas y sistemas personalizados."
+      },
+      {
+        "title": "Desarrollo Web",
+        "description": "Sitios web profesionales, rápidos y orientados a conversión."
+      },
+      {
+        "title": "Automatización con IA",
+        "description": "Integramos inteligencia artificial en tus procesos para reducir errores y aumentar eficiencia."
+      },
+      {
+        "title": "Consultoría Estratégica",
+        "description": "Analizamos tu idea o negocio y te damos un roadmap claro."
+      },
+      {
+        "title": "Aplicaciones Móviles",
+        "description": "Apps nativas o híbridas, diseñadas para tu usuario."
+      },
+      {
+        "title": "Desarrollo de APIs",
+        "description": "Integraciones robustas y escalables entre sistemas."
+      },
+      {
+        "title": "Experiencias AR/VR",
+        "description": "Cuando tu proyecto lo requiere, creamos experiencias inmersivas en realidad aumentada y virtual."
+      },
+      {
+        "title": "Búsqueda de Financiamiento",
+        "description": "Te acompañamos en el proceso de conectar con inversores y preparar tu pitch."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Lo que dicen nuestros clientes",
+    "sectionIntro": "Descubre las experiencias transformadoras que hemos creado junto a nuestros clientes y cómo hemos impulsado su éxito digital.",
+    "items": [
+      {
+        "message": "La implementación de la nueva API fue impecable. El equipo de desarrollo superó nuestras expectativas, entregando un producto robusto y escalable en tiempo récord. ¡Excelente trabajo!",
+        "name": "Sofía Hernández",
+        "email": "sofiadev@outlook.com"
+      },
+      {
+        "message": "La automatización con IA ha revolucionado nuestros procesos internos. Hemos reducido los errores manuales en un 70% y la eficiencia ha mejorado drásticamente. ¡Una inversión que vale la pena!",
+        "name": "Ricardo Gómez",
+        "email": "ricardo_gomez87@yahoo.com"
+      },
+      {
+        "message": "El desarrollo de la aplicación móvil fue un éxito rotundo. La interfaz es intuitiva y el rendimiento es excepcional. Nuestros usuarios están encantados con la nueva experiencia.",
+        "name": "Valeria Torres",
+        "email": "valeriatc@gmail.com"
+      },
+      {
+        "message": "La integración de la IA en nuestro sistema de gestión de clientes ha sido fundamental. Ahora podemos predecir las necesidades de nuestros clientes con una precisión asombrosa, mejorando la satisfacción y las ventas.",
+        "name": "Mariana Díaz",
+        "email": "mari_diaz@outlook.com"
+      },
+      {
+        "message": "La solución de automatización de marketing que implementamos ha superado todas nuestras expectativas. Hemos logrado un aumento del 40% en la generación de leads y una optimización significativa de nuestras campañas.",
+        "name": "Luis Alberto Ramírez",
+        "email": "luis.ramirez.mkt@gmail.com"
+      }
+    ]
+  },
+  "founders": {
+    "sectionTitle": "Conoce a los Fundadores",
+    "sectionIntro": "Los visionarios detrás de la transformación digital que impulsa el futuro",
+    "cesar": {
+      "name": "César Michel Bailón Esquivel",
+      "bio": "Profesional de TI apasionado con más de 18 años de experiencia diversa en tecnología, especializado en procesos ITSM, soporte técnico, tech ops y desarrollo de software. Experto en impulsar la excelencia tecnológica e innovación dentro de organizaciones dinámicas.",
+      "experience": "18+ años en tecnología, ITSM (IT Service Management) y tech ops",
+      "specialization": "IA/ML, AR/VR, Desarrollo de software y videojuegos",
+      "processes": "ITSM, Soporte Basado en ITIL, Tech Operations",
+      "location": "Guadalajara, México"
+    },
+    "fernando": {
+      "name": "Fernando González Dávalos",
+      "role": "Estrategia de negocios",
+      "bio": "Co-Founder de Ideas2Work | Consultor Estratégico Certificado. Consultor con experiencia desde PyMEs hasta la industria aeroespacial, especializado en estrategia, transformación digital y ejecución ágil. Cuenta con formación en Arquitectura Empresarial, TOGAF, ITIL, PMO y metodologías ágiles.",
+      "specialization": "Estrategia, Transformación Digital y Ejecución Ágil",
+      "experience": "Desde PyMEs hasta industria aeroespacial",
+      "certifications": "TOGAF, ITIL, PMO, Cisco Business Architecture",
+      "education": "IPADE, EGADE, Erasmus, University of Virginia"
+    }
+  },
+  "techStack": {
+    "title": "Tecnologías que Hacen Posible Este Sitio",
+    "description": "Nuestro sitio web está construido con tecnologías modernas y confiables que garantizan una experiencia rápida y segura.",
+    "button": "Tecnologías utilizadas"
+  },
+  "contact": {
+    "title": "Contacto",
+    "description": "¿Tienes un proyecto en mente? Hablemos.",
+    "saveContact": "Guardar Contacto",
+    "downloadVCard": "Descargar tarjeta vCard",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "message": "Mensaje",
+      "submit": "Enviar mensaje"
+    }
+  },
+  "footer": {
+    "copyright": "Todos los derechos reservados.",
+    "terms": "Términos y condiciones",
+    "privacy": "Aviso de privacidad",
+    "contact": "Contacto",
+    "lastUpdated": "Última actualización: ${currentYear}",
+    "termsContent": {
+      "section1": {
+        "title": "1. Aceptación de Términos",
+        "content": "Al acceder y utilizar este sitio web, usted acepta estar sujeto a estos términos y condiciones de uso. Si no está de acuerdo con alguno de estos términos, le rogamos que no utilice nuestro sitio."
+      },
+      "section2": {
+        "title": "2. Uso del Sitio",
+        "content": "El contenido de este sitio es para su información general y uso personal únicamente. Está sujeto a cambios sin previo aviso."
+      },
+      "section3": {
+        "title": "3. Propiedad Intelectual",
+        "content": "Este sitio web contiene material que es propiedad de o está licenciado a Third Studio. Este material incluye, pero no se limita a, el diseño, apariencia, gráficos y logotipos."
+      },
+      "section4": {
+        "title": "4. Limitación de Responsabilidad",
+        "content": "Third Studio no será responsable por ningún daño directo, indirecto, incidental, especial o consecuente que resulte del uso o la imposibilidad de usar este sitio web."
+      },
+      "section5": {
+        "title": "5. Ley Aplicable",
+        "content": "Estos términos y condiciones se rigen por las leyes de México. Cualquier disputa relacionada con estos términos estará sujeta a la jurisdicción exclusiva de los tribunales de Guadalajara, Jalisco."
+      },
+      "section6": {
+        "title": "6. Cambios a los Términos",
+        "content": "Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio."
+      }
+    },
+    "privacyContent": {
+      "section1": {
+        "title": "1. Información que Recopilamos",
+        "content": "Podemos recopilar información personal como su nombre, dirección de correo electrónico y número de teléfono cuando nos contacta a través de nuestro formulario de contacto o correo electrónico."
+      },
+      "section2": {
+        "title": "2. Uso de la Información",
+        "content": "Utilizamos la información recopilada para responder a sus consultas, proporcionar los servicios solicitados y mejorar nuestra oferta de servicios."
+      },
+      "section3": {
+        "title": "3. Protección de Datos",
+        "content": "Implementamos medidas de seguridad apropiadas para proteger su información personal contra acceso no autorizado, alteración, divulgación o destrucción."
+      },
+      "section4": {
+        "title": "4. Compartir Información",
+        "content": "No vendemos, comercializamos ni transferimos su información personal a terceros sin su consentimiento, excepto cuando sea necesario para proporcionar los servicios solicitados o cumplir con obligaciones legales."
+      },
+      "section5": {
+        "title": "5. Cookies y Tecnologías Similares",
+        "content": "Nuestro sitio puede utilizar cookies para mejorar la experiencia del usuario. Puede configurar su navegador para rechazar cookies, pero esto puede afectar la funcionalidad del sitio."
+      },
+      "section6": {
+        "title": "6. Sus Derechos",
+        "content": "Usted tiene derecho a acceder, rectificar, cancelar u oponerse al tratamiento de sus datos personales. Para ejercer estos derechos, contáctenos en hola@thirdstudio.tech."
+      },
+      "section7": {
+        "title": "7. Cambios a este Aviso",
+        "content": "Podemos actualizar este aviso de privacidad periódicamente. Le recomendamos revisar esta página ocasionalmente para estar informado sobre cualquier cambio."
+      }
+    }
+  },
+  "language": {
+    "switch": "Switch to English",
+    "current": "Español"
+  },
+  "common": {
+    "navigation": "Navegación",
+    "legal": "Legal",
+    "contact": "Contacto",
+    "home": "Inicio",
+    "pillars": "Pilares",
+    "industries": "Industrias"
+  },
+  "brochure": {
+    "hero": {
+      "tagline": "Tecnología que transforma realidades"
+    },
+    "whatWeDo": {
+      "sectionTitle": "¿Qué hacemos en Third?",
+      "intro1": "Creamos soluciones digitales que cambian la manera en que las personas y las empresas interactúan con el mundo.",
+      "intro2": "Desde recorridos virtuales y simuladores hasta asistentes de inteligencia artificial y software operativo, nuestro trabajo tiene un objetivo claro: ayudarte a avanzar con tecnología útil, precisa y poderosa.",
+      "highlight": "No se trata solo de programar. Se trata de transformar.",
+      "virtualTours": {
+        "title": "Recorridos Virtuales"
+      },
+      "aiAssistant": {
+        "title": "Asistente IA"
+      }
+    },
+    "whyWeDoIt": {
+      "sectionTitle": "¿Por qué lo hacemos?",
+      "intro1": "Porque entendemos que la tecnología ya no es opcional. Es la base para competir, crecer y adaptarse a un mundo que no espera.",
+      "intro2": "En Third, ayudamos a organizaciones a rediseñar procesos, capacitar a su gente, automatizar su operación y conectar con sus clientes de formas más efectivas y memorables.",
+      "transformationTitle": "Transformación Digital"
+    },
+    "pillars": {
+      "sectionTitle": "Nuestros 4 pilares",
+      "pillar1": {
+        "number": "01",
+        "title": "Software y Transformación Digital",
+        "description": "Desarrollamos plataformas robustas, móviles y escalables, adaptadas a tu operación. También te guiamos en tu viaje de transformación digital con metodologías probadas y visión estratégica.",
+        "examples": "ERPs industriales, plataformas de salud, CRMs inmobiliarios, portales ciudadanos, migraciones a la nube, compliance ITIL y más."
+      },
+      "pillar2": {
+        "number": "02",
+        "title": "Agentes de Inteligencia Artificial",
+        "description": "Creamos asistentes y bots que automatizan tareas, atienden clientes, analizan información y toman decisiones. Lo hacemos con frameworks avanzados de IA, integraciones a sistemas existentes y modelos conversacionales multicanal.",
+        "examples": "Automatización en reclutamiento, atención al cliente, triaje médico, recomendadores de productos, asistentes legales, dashboards financieros."
+      },
+      "pillar3": {
+        "number": "03",
+        "title": "Consultoría y Búsqueda de Financiamiento",
+        "description": "Te acompañamos desde la validación de tu idea hasta la conexión con inversores. Analizamos tu modelo de negocio, preparamos tu pitch y te guiamos en el proceso de fundraising.",
+        "examples": "Validación de modelo de negocio, preparación de pitch deck, conexión con inversores, estrategia de crecimiento, análisis de mercado."
+      },
+      "pillar4": {
+        "number": "04",
+        "title": "Soluciones Llave en Mano",
+        "description": "Entregamos proyectos completos end-to-end: desde el concepto hasta el lanzamiento. Nos encargamos de tecnología, diseño, infraestructura y puesta en marcha.",
+        "examples": "Startups completas, plataformas empresariales, experiencias inmersivas AR/VR, sistemas integrados, productos digitales listos para operar."
+      }
+    },
+    "methodology": {
+      "sectionTitle": "¿Cómo trabajamos?",
+      "sectionIntro": "Nuestra metodología es directa, ágil y colaborativa",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Diagnóstico profundo",
+          "description": "Entendemos tus retos."
+        },
+        {
+          "number": "02",
+          "title": "Diseño funcional y visual",
+          "description": "Arquitectura, UX y flujos claros."
+        },
+        {
+          "number": "03",
+          "title": "Desarrollo modular",
+          "description": "Iteramos con velocidad y orden."
+        },
+        {
+          "number": "04",
+          "title": "Validación y despliegue",
+          "description": "Probamos, documentamos y lanzamos."
+        },
+        {
+          "number": "05",
+          "title": "Optimización constante",
+          "description": "Evolucionamos contigo."
+        }
+      ]
+    },
+    "industries": {
+      "sectionTitle": "¿A quién ayudamos?",
+      "sectionIntro": "A empresas que ya están listas para dar el siguiente paso. Conocemos sus retos y hablamos su idioma:",
+      "cta": "Si tienes una operación compleja, intensiva en personas o procesos, ahí es donde brillamos.",
+      "items": [
+        {
+          "title": "Inmobiliarias y constructoras",
+          "description": "Necesitan mostrar, vender y diferenciarse. Creamos recorridos virtuales inmersivos y plataformas que cierran ventas."
+        },
+        {
+          "title": "Industrias con operación fabril",
+          "description": "Capacitamos operadores en realidad virtual simulando escenarios reales (calor, vibración, riesgo), evitando accidentes y acelerando el aprendizaje."
+        },
+        {
+          "title": "Retailers y cadenas comerciales",
+          "description": "Automatizamos atención al cliente, sistemas de recomendación, soporte de inventario, y más, con agentes inteligentes y plataformas propias."
+        },
+        {
+          "title": "Organizadores de eventos y exposiciones",
+          "description": "Integramos tecnología para convertir eventos físicos o virtuales en experiencias inolvidables, con asistentes IA y contenido interactivo."
+        }
+      ],
+      "transformation": {
+        "title": "Transformación Digital Integral",
+        "intro": "En Third Studio, entendemos que la transformación digital va más allá de la simple adopción de nuevas tecnologías.",
+        "pillars": [
+          {
+            "title": "Rediseño de Procesos",
+            "description": "Aplicamos metodologías ágiles y arquitectura empresarial certificada TOGAF, optimizando cada flujo de trabajo para maximizar la eficiencia operativa."
+          },
+          {
+            "title": "Migración de Infraestructura",
+            "description": "Enfoque estratégico que garantiza continuidad del negocio, implementando soluciones cloud modernas y arquitecturas escalables."
+          },
+          {
+            "title": "Modernización de Sistemas Legacy",
+            "description": "Integramos tecnologías de vanguardia como Inteligencia Artificial, Machine Learning, Realidad Virtual y Aumentada."
+          },
+          {
+            "title": "Acompañamiento del Cambio Cultural",
+            "description": "La verdadera transformación digital requiere más que tecnología: necesita personas preparadas. Desarrollamos estrategias de adopción tecnológica."
+          }
+        ],
+        "footer": "Garantizamos una transición exitosa hacia una cultura digital"
+      }
+    },
+    "contact": {
+      "sectionTitle": "¿Y si comenzamos hoy?",
+      "intro": "Tu visión necesita un socio que la entienda y la ejecute con precisión. Nosotros convertimos tecnología en soluciones que se usan, funcionan y generan valor.",
+      "cardTitle": "Contáctanos",
+      "email": "hola@thirdstudio.tech",
+      "phone": "+52 1 333 815 3789",
+      "website": "www.thirdstudio.tech",
+      "downloadContact": "Descargar Información de Contacto"
+    }
+  }
+}

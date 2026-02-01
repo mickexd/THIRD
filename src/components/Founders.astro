@@ -1,0 +1,322 @@
+---
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+
+const translations = await import(`../locales/${locale}.json`);
+const t = translations.default;
+---
+
+<section class="founders" id="meet-section">
+  <div class="founders-container">
+    <div class="founders-header">
+      <h2 class="reveal-text" data-t="founders.sectionTitle">
+        {t.founders.sectionTitle}
+      </h2>
+      <div class="header-line"></div>
+      <p class="section-intro" data-t="founders.sectionIntro">
+        {t.founders.sectionIntro}
+      </p>
+    </div>
+
+    <div class="founders-grid">
+      <!-- César -->
+      <div class="founder-card">
+        <div class="founder-image">
+          <img src="/assets/img/Cesar.webp" alt={t.founders.cesar.name} />
+        </div>
+        <div class="founder-content">
+          <h3 class="founder-name" data-t="founders.cesar.name">
+            {t.founders.cesar.name}
+          </h3>
+          <p class="founder-bio" data-t="founders.cesar.bio">
+            {t.founders.cesar.bio}
+          </p>
+          <a
+            href="https://www.linkedin.com/in/cesarbailon/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="founder-link"
+          >
+            LinkedIn →
+          </a>
+        </div>
+      </div>
+
+      <!-- Fernando -->
+      <div class="founder-card">
+        <div class="founder-image">
+          <img src="/assets/img/Fernando.webp" alt={t.founders.fernando.name} />
+        </div>
+        <div class="founder-content">
+          <h3 class="founder-name" data-t="founders.fernando.name">
+            {t.founders.fernando.name}
+          </h3>
+          <p class="founder-role" data-t="founders.fernando.role">
+            {t.founders.fernando.role}
+          </p>
+          <p class="founder-bio" data-t="founders.fernando.bio">
+            {t.founders.fernando.bio}
+          </p>
+          <a
+            href="https://www.linkedin.com/in/fernando-gonzalez-davalos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="founder-link"
+          >
+            LinkedIn →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .founders {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #111111;
+    padding: 15vh 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .founders-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .founders-header {
+    margin-bottom: 10vh;
+    text-align: left;
+  }
+
+  .founders-header h2 {
+    font-size: clamp(3rem, 8vw, 10rem);
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-family: "Inter", system-ui, sans-serif;
+    letter-spacing: -0.04em;
+  }
+
+  .founders-header .header-line {
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #9333ea 0%, #3b82f6 100%);
+    margin-bottom: 30px;
+  }
+
+  .section-intro {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  .founders-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .founder-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #0a0a0a;
+    overflow: hidden;
+    transform: rotate(0deg);
+  }
+
+  .founder-card:nth-child(2) {
+    direction: rtl;
+  }
+
+  .founder-card:nth-child(2) .founder-content {
+    direction: ltr;
+  }
+
+  .founder-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    transform: rotate(0deg);
+  }
+
+  .founder-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transform: rotate(0.001deg);
+    transition:
+      filter 0.6s ease,
+      transform 0.6s ease;
+  }
+
+  .founder-card:hover .founder-image img {
+    filter: grayscale(0%);
+    transform: scale(1.05) rotate(0.001deg);
+  }
+
+  .founder-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .founder-name {
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .founder-role {
+    font-size: 1rem;
+    color: #9333ea;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  .founder-bio {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .founder-link {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.875rem;
+    border-bottom: 2px solid #9333ea;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .founder-link:hover {
+    color: #9333ea;
+  }
+
+  @media (max-width: 1200px) {
+    .founders-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .founder-card {
+      grid-template-columns: 1fr;
+    }
+
+    .founder-card:nth-child(2) {
+      direction: ltr;
+    }
+
+    .founder-image {
+      aspect-ratio: 16/9;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .founders {
+      padding: 10vh 5vw;
+    }
+
+    .founders-header h2 {
+      font-size: 2.5rem;
+    }
+
+    .founder-content {
+      padding: 30px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".founders");
+    if (!section) return;
+
+    const header = section.querySelector(".founders-header h2");
+    const headerLine = section.querySelector(".header-line");
+    const intro = section.querySelector(".section-intro");
+    const cards = section.querySelectorAll(".founder-card");
+
+    gsap.set(header, { y: 100, opacity: 0 });
+    gsap.set(headerLine, { width: 0 });
+    gsap.set(intro, { y: 30, opacity: 0 });
+    gsap.set(cards, { y: 80, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.to(header, {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "expo.out",
+    })
+      .to(
+        headerLine,
+        {
+          width: "200px",
+          duration: 1.5,
+          ease: "power4.inOut",
+        },
+        "-=0.8",
+      )
+      .to(
+        intro,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=1",
+      )
+      .to(
+        cards,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out",
+        },
+        "-=0.5",
+      );
+  });
+</script>

@@ -1,0 +1,835 @@
+---
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+
+const translations = await import(`../locales/${locale}.json`);
+const t = translations.default;
+
+const currentPath = Astro.url.pathname;
+const isBrochurePage = currentPath.includes("/brochure");
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img
+          src="/assets/img/logo.webp"
+          alt="Third Studio"
+          class="footer-logo"
+        />
+        <p class="footer-tagline" data-t="hero.headline">
+          {t.hero.headline}
+        </p>
+      </div>
+
+      <div class="footer-nav-groups">
+        <div class="footer-nav-group">
+          <h4 class="footer-nav-title" data-t="common.navigation">
+            {t.common.navigation}
+          </h4>
+          <ul class="footer-nav-list">
+            <li>
+              <a
+                href={locale === "es" ? "/" : "/en/"}
+                class="footer-link"
+                data-t="common.home">{t.common.home}</a
+              >
+            </li>
+            {
+              !isBrochurePage ? (
+                <>
+                  <li>
+                    <button
+                      type="button"
+                      class="footer-link"
+                      onclick="document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' })"
+                      data-t="nav.services"
+                    >
+                      {t.nav.services}
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      class="footer-link"
+                      onclick="document.getElementById('how-we-work-section')?.scrollIntoView({ behavior: 'smooth' })"
+                      data-t="nav.howWeWork"
+                    >
+                      {t.nav.howWeWork}
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      class="footer-link"
+                      onclick="document.getElementById('meet-section')?.scrollIntoView({ behavior: 'smooth' })"
+                      data-t="nav.about"
+                    >
+                      {t.nav.about}
+                    </button>
+                  </li>
+                  <li>
+                    <a
+                      href={locale === "es" ? "/brochure" : "/en/brochure"}
+                      class="footer-link"
+                      data-t="nav.brochure"
+                    >
+                      {t.nav.brochure}
+                    </a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <a
+                      href={locale === "es" ? "/" : "/en/"}
+                      class="footer-link"
+                      data-t="common.home"
+                    >
+                      {t.common.home}
+                    </a>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      class="footer-link"
+                      onclick="document.getElementById('pillars-section')?.scrollIntoView({ behavior: 'smooth' })"
+                      data-t="common.pillars"
+                    >
+                      {t.common.pillars}
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      class="footer-link"
+                      onclick="document.getElementById('industries-section')?.scrollIntoView({ behavior: 'smooth' })"
+                      data-t="common.industries"
+                    >
+                      {t.common.industries}
+                    </button>
+                  </li>
+                </>
+              )
+            }
+          </ul>
+        </div>
+
+        <div class="footer-nav-group">
+          <h4 class="footer-nav-title" data-t="common.legal">
+            {t.common.legal}
+          </h4>
+          <ul class="footer-nav-list">
+            <li>
+              <button
+                type="button"
+                class="footer-link"
+                onclick="document.getElementById('terms-modal')?.classList.add('active'); document.body.style.overflow = 'hidden';"
+                data-t="footer.terms"
+              >
+                {t.footer.terms}
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="footer-link"
+                onclick="document.getElementById('privacy-modal')?.classList.add('active'); document.body.style.overflow = 'hidden';"
+                data-t="footer.privacy"
+              >
+                {t.footer.privacy}
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="footer-link"
+                onclick="document.getElementById('tech-stack-modal')?.classList.add('active'); document.body.style.overflow = 'hidden';"
+                data-t="techStack.button"
+              >
+                {t.techStack.button}
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-group">
+          <h4 class="footer-nav-title" data-t="nav.contact">
+            {t.nav.contact}
+          </h4>
+          <ul class="footer-nav-list">
+            <li>
+              <a href="mailto:hola@thirdstudio.tech" class="footer-link"
+                >hola@thirdstudio.tech</a
+              >
+            </li>
+            <li>
+              <span class="footer-link-static"
+                >Guadalajara, Jalisco, México</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        © {currentYear} Third Studio. {t.footer.copyright}
+      </p>
+      <div class="footer-actions">
+        <LanguageSwitcher currentLocale={locale} />
+      </div>
+    </div>
+  </div>
+
+  <!-- Tech Stack Modal -->
+  <div
+    id="tech-stack-modal"
+    class="modal"
+    onclick="if(event.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; }"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="modal-close"
+          onclick="document.getElementById('tech-stack-modal')?.classList.remove('active'); document.body.style.overflow = '';"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <h3 class="modal-title" data-t="techStack.title">{t.techStack.title}</h3>
+        <p class="modal-description" data-t="techStack.description">
+          {t.techStack.description}
+        </p>
+
+        <div class="tech-grid">
+          <div class="tech-item">
+            <img
+              src="https://astro.build/assets/press/astro-icon-light-gradient.svg"
+              alt="Astro"
+            />
+            <span>Astro</span>
+          </div>
+          <div class="tech-item">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+              alt="React"
+            />
+            <span>React</span>
+          </div>
+          <div class="tech-item">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"
+              alt="TypeScript"
+            />
+            <span>TypeScript</span>
+          </div>
+          <div class="tech-item">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+              alt="Tailwind CSS"
+            />
+            <span>Tailwind CSS</span>
+          </div>
+          <div class="tech-item">
+            <img src="https://swiperjs.com/images/swiper-logo.svg" alt="Swiper" />
+            <span>Swiper</span>
+          </div>
+          <div class="tech-item">
+            <img
+              src="https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg"
+              alt="GSAP"
+            />
+            <span>GSAP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms and Conditions Modal -->
+  <div
+    id="terms-modal"
+    class="modal"
+    onclick="if(event.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; }"
+  >
+    <div class="modal-content modal-content--legal">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="modal-close"
+          onclick="document.getElementById('terms-modal')?.classList.remove('active'); document.body.style.overflow = '';"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <h3 class="modal-title">{t.footer.terms}</h3>
+
+        <div class="legal-content">
+          <section class="legal-section">
+            <h4>{t.footer.termsContent.section1.title}</h4>
+            <p>{t.footer.termsContent.section1.content}</p>
+          </section>
+
+          <section class="legal-section">
+            <h4>{t.footer.termsContent.section2.title}</h4>
+            <p>{t.footer.termsContent.section2.content}</p>
+          </section>
+
+          <section class="legal-section">
+            <h4>{t.footer.termsContent.section3.title}</h4>
+            <p>{t.footer.termsContent.section3.content}</p>
+          </section>
+
+          <section class="legal-section">
+            <h4>{t.footer.termsContent.section4.title}</h4>
+            <p>{t.footer.termsContent.section4.content}</p>
+          </section>
+
+          <section class="legal-section">
+            <h4>{t.footer.termsContent.section5.title}</h4>
+            <p>{t.footer.termsContent.section5.content}</p>
+          </section>
+
+          <section class="legal-section">
+            <h4>{t.footer.termsContent.section6.title}</h4>
+            <p>{t.footer.termsContent.section6.content}</p>
+          </section>
+
+          <p class="legal-date">
+            {t.footer.lastUpdated.replace("${currentYear}", currentYear.toString())}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div
+    id="privacy-modal"
+    class="modal"
+    onclick="if(event.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; }"
+  >
+    <div class="modal-content modal-content--legal">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="modal-close"
+          onclick="document.getElementById('privacy-modal')?.classList.remove('active'); document.body.style.overflow = '';"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <h3 class="modal-title">{t.footer.privacy}</h3>
+
+        <div class="legal-content">
+          <section class="legal-section">
+            <h4>{t.footer.privacyContent.section1.title}</h4>
+            <p>{t.footer.privacyContent.section1.content}</p>
+          </section>
+
+          <section class="legal-section">
+            <h4>{t.footer.privacyContent.section2.title}</h4>
+            <p>{t.footer.privacyContent.section2.content}</p>
+          </section>
+
+          <section class="legal-section">
+            <h4>{t.footer.privacyContent.section3.title}</h4>
+            <p>{t.footer.privacyContent.section3.content}</p>
+          </section>
+
+          <section class="legal-section">
+            <h4>{t.footer.privacyContent.section4.title}</h4>
+            <p>{t.footer.privacyContent.section4.content}</p>
+          </section>
+
+          <section class="legal-section">
+            <h4>{t.footer.privacyContent.section5.title}</h4>
+            <p>{t.footer.privacyContent.section5.content}</p>
+          </section>
+
+          <section class="legal-section">
+            <h4>{t.footer.privacyContent.section6.title}</h4>
+            <p>{t.footer.privacyContent.section6.content}</p>
+          </section>
+
+          <section class="legal-section">
+            <h4>{t.footer.privacyContent.section7.title}</h4>
+            <p>{t.footer.privacyContent.section7.content}</p>
+          </section>
+
+          <p class="legal-date">
+            {t.footer.lastUpdated.replace("${currentYear}", currentYear.toString())}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: #0a0a0a;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 80px 5vw 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+  }
+
+  .footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .footer-main {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    height: 48px;
+    width: auto;
+    align-self: flex-start;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+  }
+
+  .footer-tagline {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    max-width: 300px;
+    line-height: 1.5;
+  }
+
+  .footer-nav-groups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .footer-nav-title {
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    opacity: 0.5;
+  }
+
+  .footer-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-link,
+  .footer-link-static {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    display: inline-block;
+  }
+
+  .footer-link:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+  }
+
+  .footer-link-static {
+    cursor: default;
+  }
+
+  .footer-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 32px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copyright {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .footer-actions {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Modal Base Styles */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-content {
+    background: #0f0f0f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    transform: scale(0.95) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+  }
+
+  .modal-header {
+    padding: 24px 24px 0 24px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .modal-body {
+    padding: 0 60px 60px 60px;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .modal.active .modal-content {
+    transform: scale(1) translateY(0);
+  }
+
+  .modal-content--legal {
+    max-width: 900px;
+  }
+
+  .modal-content--legal .modal-body {
+    padding: 0 60px 60px 60px;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    z-index: 10;
+  }
+
+  .modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+  }
+
+  .modal-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .modal-description {
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 48px;
+    line-height: 1.6;
+    font-size: 1.125rem;
+  }
+
+  /* Tech Grid */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .tech-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .tech-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .tech-item img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    filter: grayscale(1) brightness(1.5);
+    transition: all 0.3s ease;
+  }
+
+  .tech-item:hover img {
+    filter: grayscale(0) brightness(1);
+  }
+
+  .tech-item span {
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  /* Legal Content Styles */
+  .legal-content {
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.8;
+  }
+
+  .legal-section {
+    margin-bottom: 40px;
+  }
+
+  .legal-section h4 {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  .legal-section p {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .legal-date {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.875rem;
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Scrollbar styling */
+  .modal-body::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .modal-body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .modal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+
+  .modal-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  @media (max-width: 1024px) {
+    .footer-main {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .footer-tagline {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 60px 5vw 32px;
+    }
+
+    .footer-nav-groups {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .footer-bottom {
+      flex-direction: column-reverse;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .modal-content {
+      max-height: 90vh;
+    }
+
+    .modal-header {
+      padding: 20px 20px 0 20px;
+    }
+
+    .modal-body {
+      padding: 0 24px 40px 24px;
+    }
+
+    .modal-content--legal {
+      padding: 0;
+    }
+
+    .modal-content--legal .modal-body {
+      padding: 48px 24px;
+    }
+
+    .modal-title {
+      font-size: 1.75rem;
+    }
+
+    .tech-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tech-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .modal-content {
+      max-height: 85vh;
+    }
+
+    .modal-header {
+      padding: 16px 16px 0 16px;
+      min-height: 52px;
+    }
+
+    .modal-body {
+      padding: 0 16px 24px 16px;
+    }
+
+    .modal-content--legal .modal-body {
+      padding: 0 16px 24px 16px;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      padding-top: 8px;
+    }
+
+    .modal-description {
+      font-size: 0.9375rem;
+      margin-bottom: 32px;
+    }
+
+    .tech-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .tech-item {
+      padding: 20px;
+    }
+
+    .tech-item img {
+      width: 36px;
+      height: 36px;
+    }
+
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      top: 8px;
+      right: 8px;
+    }
+
+    .legal-section h4 {
+      font-size: 1.1rem;
+    }
+
+    .legal-section p {
+      font-size: 0.9rem;
+    }
+  }
+</style>

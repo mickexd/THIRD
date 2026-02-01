@@ -1,0 +1,279 @@
+---
+interface Props {
+  locale?: string;
+}
+
+const { locale = "es" } = Astro.props;
+
+const translations = await import(`../locales/${locale}.json`);
+const t = translations.default;
+---
+
+<section class="why-we-do-it" id="why-we-do-it-section">
+  <div class="why-we-do-it-container">
+    <div class="section-header">
+      <h2 class="reveal-text" data-t="brochure.whyWeDoIt.sectionTitle">
+        {t.brochure.whyWeDoIt.sectionTitle}
+      </h2>
+      <div class="header-line"></div>
+    </div>
+
+    <div class="content-grid">
+      <div class="text-content">
+        <p class="intro-text" data-t="brochure.whyWeDoIt.intro1">
+          {t.brochure.whyWeDoIt.intro1}
+        </p>
+        <p class="intro-text" data-t="brochure.whyWeDoIt.intro2">
+          {t.brochure.whyWeDoIt.intro2}
+        </p>
+      </div>
+
+      <div class="video-card">
+        <span class="card-number">03</span>
+        <h3 class="card-title" data-t="brochure.whyWeDoIt.transformationTitle">
+          {t.brochure.whyWeDoIt.transformationTitle}
+        </h3>
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline class="video-player">
+            <source src="/assets/video/InteractiveVR.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-bg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-we-do-it {
+    position: relative;
+    width: 100%;
+    background-color: #0a0a0a;
+    padding: 15vh 5vw;
+    overflow: hidden;
+  }
+
+  .why-we-do-it-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 8vh;
+    text-align: left;
+  }
+
+  .section-header h2 {
+    font-size: clamp(3rem, 8vw, 10rem);
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-family: "Inter", system-ui, sans-serif;
+    letter-spacing: -0.04em;
+  }
+
+  .header-line {
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #a855f7 0%, #ec4899 100%);
+    margin-bottom: 30px;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: stretch;
+  }
+
+  .text-content {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .intro-text {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .video-card {
+    position: relative;
+    height: 450px;
+    padding: 40px;
+    background-color: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
+  }
+
+  .video-card:hover .card-bg {
+    transform: scaleY(1);
+  }
+
+  .card-number {
+    font-family: "Geist Mono", "Fira Code", monospace;
+    font-size: 1rem;
+    color: #3b82f6;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+  }
+
+  .video-card:hover .card-number {
+    color: #ffffff;
+  }
+
+  .card-title {
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 20px 0;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+  }
+
+  .video-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .video-player {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: opacity 0.6s ease;
+  }
+
+  .video-card:hover .video-player {
+    opacity: 0.3;
+  }
+
+  @media (max-width: 1024px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .text-content {
+      max-width: 100%;
+    }
+
+    .video-card {
+      height: 400px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .why-we-do-it {
+      padding: 10vh 5vw;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+    }
+
+    .video-card {
+      height: 350px;
+      padding: 30px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".why-we-do-it");
+    if (!section) return;
+
+    const header = section.querySelector(".section-header h2");
+    const headerLine = section.querySelector(".header-line");
+    const introTexts = section.querySelectorAll(".intro-text");
+    const videoCard = section.querySelector(".video-card");
+
+    gsap.set(header, { y: 100, opacity: 0 });
+    gsap.set(headerLine, { width: 0 });
+    gsap.set(introTexts, { y: 30, opacity: 0 });
+    gsap.set(videoCard, { y: 80, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.to(header, {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "expo.out",
+    })
+      .to(
+        headerLine,
+        {
+          width: "200px",
+          duration: 1.5,
+          ease: "power4.inOut",
+        },
+        "-=0.8",
+      )
+      .to(
+        introTexts,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power2.out",
+        },
+        "-=1",
+      )
+      .to(
+        videoCard,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+        },
+        "-=0.5",
+      );
+  });
+</script>

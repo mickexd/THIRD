@@ -1,0 +1,104 @@
+/* 16:10 Aspect Ratio Global Fixes */
+/* These styles ensure all sections display properly on 16:10 screens */
+
+/* Method 1: Precise aspect ratio detection */
+@media (min-width: 901px) and (min-aspect-ratio: 1.59/1) and (max-aspect-ratio: 1.61/1) {
+  /* Large section headers (h2) */
+  .services-header h2,
+  .how-we-work-header h2,
+  .testimonials-header h2,
+  .founders-header h2,
+  .contact-header h2,
+  .section-header h2 {
+    font-size: clamp(2.5rem, 6.5vw, 8rem) !important;
+  }
+
+  /* Section intro text */
+  .section-intro,
+  .intro-text {
+    font-size: clamp(0.95rem, 1.3vw, 1.3rem) !important;
+  }
+
+  /* Service/Card titles */
+  .service-title,
+  .pillar-title,
+  .founder-name,
+  .contact-title,
+  .card-title,
+  .industry-title {
+    font-size: clamp(1.2rem, 1.4vw, 1.6rem) !important;
+  }
+
+  /* Descriptions */
+  .pillar-description,
+  .industry-description,
+  .step-description {
+    font-size: clamp(0.9rem, 1.1vw, 1rem) !important;
+  }
+
+  /* Fix HowWeWork section height */
+  .how-we-work {
+    padding: 10vh 5vw !important;
+  }
+
+  .how-we-work-header {
+    margin-bottom: 6vh !important;
+  }
+
+  .pillar-card {
+    height: 50vh !important;
+    min-height: 350px !important;
+    padding: 40px 30px !important;
+  }
+}
+
+/* Method 2: Common 16:10 resolutions (1280x800, 1440x900, 1680x1050, 1920x1200) */
+@media (min-width: 1280px) and (max-width: 1920px) and (min-height: 800px) and (max-height: 1200px) {
+  /* Large section headers (h2) */
+  .services-header h2,
+  .how-we-work-header h2,
+  .testimonials-header h2,
+  .founders-header h2,
+  .contact-header h2,
+  .section-header h2 {
+    font-size: clamp(2.5rem, 6.5vw, 8rem) !important;
+  }
+
+  /* Section intro text */
+  .section-intro,
+  .intro-text {
+    font-size: clamp(0.95rem, 1.3vw, 1.3rem) !important;
+  }
+
+  /* Service/Card titles */
+  .service-title,
+  .pillar-title,
+  .founder-name,
+  .contact-title,
+  .card-title,
+  .industry-title {
+    font-size: clamp(1.2rem, 1.4vw, 1.6rem) !important;
+  }
+
+  /* Descriptions */
+  .pillar-description,
+  .industry-description,
+  .step-description {
+    font-size: clamp(0.9rem, 1.1vw, 1rem) !important;
+  }
+
+  /* Fix HowWeWork section height */
+  .how-we-work {
+    padding: 10vh 5vw !important;
+  }
+
+  .how-we-work-header {
+    margin-bottom: 6vh !important;
+  }
+
+  .pillar-card {
+    height: 50vh !important;
+    min-height: 350px !important;
+    padding: 40px 30px !important;
+  }
+}
