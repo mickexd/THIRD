@@ -155,19 +155,7 @@ const industries = [
   }
 
   .card-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
-    z-index: 1;
-  }
-
-  .industry-card:hover .card-bg {
-    transform: scaleY(1);
+    display: none;
   }
 
   .industry-number {
@@ -176,7 +164,6 @@ const industries = [
     font-weight: 500;
     position: relative;
     z-index: 2;
-    transition: color 0.4s ease;
   }
 
   .industry-card[data-industry="0"] .industry-number {
@@ -195,10 +182,6 @@ const industries = [
     color: #10b981;
   }
 
-  .industry-card:hover .industry-number {
-    color: #ffffff;
-  }
-
   .industry-title {
     font-size: clamp(1.3rem, 1.8vw, 1.8rem);
     color: #ffffff;
@@ -207,7 +190,6 @@ const industries = [
     margin: 20px 0 15px;
     position: relative;
     z-index: 2;
-    transition: color 0.4s ease;
     line-height: 1.3;
   }
 
@@ -218,19 +200,13 @@ const industries = [
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 2;
-    transition: color 0.4s ease;
-  }
-
-  .industry-card:hover .industry-description {
-    color: rgba(255, 255, 255, 0.9);
   }
 
   .industry-image {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 70%;
+    height: 350px;
+    margin-top: auto;
     overflow: hidden;
     z-index: 0;
   }
@@ -239,13 +215,12 @@ const industries = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.5;
-    transition: all 0.6s ease;
+    opacity: 0.8;
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   .industry-card:hover .industry-image img {
-    opacity: 0.2;
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 
   .cta-banner {
@@ -284,8 +259,12 @@ const industries = [
     }
 
     .industry-card {
-      min-height: 550px;
+      min-height: auto;
       padding: 30px;
+    }
+
+    .industry-image {
+      height: 250px;
     }
   }
 </style>
