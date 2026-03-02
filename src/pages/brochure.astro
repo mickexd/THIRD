@@ -10,42 +10,127 @@ import BrochureIndustries from "../components/BrochureIndustries.astro";
 import BrochureContact from "../components/BrochureContact.astro";
 import Footer from "../components/Footer.astro";
 import BackToTop from "../components/BackToTop.astro";
+import en from "../locales/en.json";
+import es from "../locales/es.json";
 
 const currentPath = Astro.url.pathname;
 const locale = currentPath.startsWith("/en") ? "en" : "es";
+const t = locale === "en" ? en : es;
+
+// SEO metadata from locale files
+const seoTitle = t.seo.brochure.title;
+const seoDescription = t.seo.brochure.description;
+const seoKeywords = t.seo.brochure.keywords;
 ---
 
 <BaseLayout
-  title={locale === "es"
-    ? "THIRD STUDIO - Brochure Digital"
-    : "THIRD STUDIO - Digital Brochure"}
-  description={locale === "es"
-    ? "Explora nuestro brochure digital y descubre cómo Third Studio revoluciona la industria con VR, IA y visualización 3D."
-    : "Explore our digital brochure and discover how Third Studio revolutionizes the industry with VR, AI, and 3D visualization."}
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+  locale={locale}
+  imageAlt={locale === "en" ? "THIRD Studio Digital Solutions Brochure" : "Brochure de Soluciones Digitales THIRD Studio"}
 >
-  {/* Structured Data for Brochure Page */}
+  {/* Structured Data for Brochure Page — WebPage + Service catalog */}
   <script
     type="application/ld+json"
     is:inline
     set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name:
-        locale === "es"
-          ? "Brochure Digital - Third Studio"
-          : "Digital Brochure - Third Studio",
-      description:
-        locale === "es"
-          ? "Explora nuestro brochure digital y descubre cómo Third Studio revoluciona la industria con VR, IA y visualización 3D."
-          : "Explore our digital brochure and discover how Third Studio revolutionizes the industry with VR, AI, and 3D visualization.",
+      "@id": `https://thirdstudio.tech${locale === "en" ? "/en" : ""}/brochure#webpage`,
+      name: seoTitle,
+      description: seoDescription,
+      url: `https://thirdstudio.tech${locale === "en" ? "/en" : ""}/brochure`,
+      inLanguage: locale === "es" ? "es-MX" : "en-US",
+      isPartOf: {
+        "@type": "WebSite",
+        "@id": "https://thirdstudio.tech/#website",
+        name: "THIRD Studio",
+        url: "https://thirdstudio.tech"
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: locale === "en" ? "Home" : "Inicio",
+            item: locale === "en" ? "https://thirdstudio.tech/en" : "https://thirdstudio.tech"
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: locale === "en" ? "Digital Brochure" : "Brochure Digital",
+            item: `https://thirdstudio.tech${locale === "en" ? "/en" : ""}/brochure`
+          }
+        ]
+      },
       publisher: {
         "@type": "Organization",
-        name: "Third Studio",
+        "@id": "https://thirdstudio.tech/#organization",
+        name: "THIRD Studio",
+        alternateName: "THIRD Dev Studio",
         logo: {
           "@type": "ImageObject",
           url: "https://thirdstudio.tech/assets/img/logo.webp",
-        },
+          width: 512,
+          height: 512
+        }
       },
+      mainEntity: {
+        "@type": "ItemList",
+        name: locale === "en" ? "THIRD Studio Digital Services" : "Servicios Digitales THIRD Studio",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            item: {
+              "@type": "Service",
+              name: locale === "en" ? "Software & Digital Transformation" : "Software y Transformación Digital",
+              description: locale === "en"
+                ? "Robust, mobile, and scalable platforms tailored to your operation with proven digital transformation methodologies."
+                : "Plataformas robustas, móviles y escalables adaptadas a tu operación con metodologías probadas de transformación digital.",
+              provider: { "@type": "Organization", name: "THIRD Studio" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            item: {
+              "@type": "Service",
+              name: locale === "en" ? "Artificial Intelligence Agents" : "Agentes de Inteligencia Artificial",
+              description: locale === "en"
+                ? "AI assistants and bots that automate tasks, serve customers, analyze information, and make decisions."
+                : "Asistentes y bots de IA que automatizan tareas, atienden clientes, analizan información y toman decisiones.",
+              provider: { "@type": "Organization", name: "THIRD Studio" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            item: {
+              "@type": "Service",
+              name: locale === "en" ? "Consulting & Fundraising" : "Consultoría y Búsqueda de Financiamiento",
+              description: locale === "en"
+                ? "From idea validation to investor connections, business model analysis, and pitch preparation."
+                : "Desde la validación de tu idea hasta la conexión con inversores, análisis de modelo de negocio y preparación de pitch.",
+              provider: { "@type": "Organization", name: "THIRD Studio" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            position: 4,
+            item: {
+              "@type": "Service",
+              name: locale === "en" ? "Turnkey Solutions" : "Soluciones Llave en Mano",
+              description: locale === "en"
+                ? "Complete end-to-end projects from concept to launch: technology, design, infrastructure, and deployment."
+                : "Proyectos completos end-to-end desde el concepto hasta el lanzamiento: tecnología, diseño, infraestructura y puesta en marcha.",
+              provider: { "@type": "Organization", name: "THIRD Studio" }
+            }
+          }
+        ]
+      }
     })}
   />
   <div class="site-wrapper">
