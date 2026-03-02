@@ -1,3 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Block access to any private or admin paths (add as needed)
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://thirdstudio.tech/sitemap.xml

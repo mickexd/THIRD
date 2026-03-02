@@ -1,4 +1,23 @@
 {
+  "seo": {
+    "brand": "THIRD Studio",
+    "brandAlt": "THIRD Dev Studio",
+    "siteName": "THIRD Studio - Innovación Digital y Desarrollo",
+    "home": {
+      "title": "THIRD Studio | Desarrollo de Software, IA y Transformación Digital",
+      "description": "THIRD Studio ofrece desarrollo de software de vanguardia, automatización con IA y soluciones de transformación digital. Aplicaciones web, móviles, experiencias VR/AR y consultoría estratégica para empresas listas para evolucionar.",
+      "keywords": "THIRD Studio, THIRD Dev Studio, desarrollo de software, automatización IA, transformación digital, desarrollo web, aplicaciones móviles, experiencias VR AR, consultoría tecnológica, software personalizado, Guadalajara México"
+    },
+    "brochure": {
+      "title": "THIRD Studio - Brochure de Soluciones Digitales | Software, IA e Innovación",
+      "description": "Descubre las soluciones digitales integrales de THIRD Studio: software personalizado, agentes de IA, recorridos virtuales y proyectos llave en mano. Transformamos negocios con tecnología que funciona.",
+      "keywords": "brochure THIRD Studio, soluciones digitales, agentes IA, recorridos virtuales, empresa desarrollo software, servicios transformación digital"
+    },
+    "og": {
+      "siteName": "THIRD Studio",
+      "locale": "es_MX"
+    }
+  },
   "nav": {
     "services": "Servicios",
     "howWeWork": "Cómo trabajamos",
@@ -221,7 +240,7 @@
     "whatWeDo": {
       "sectionTitle": "¿Qué hacemos en Third?",
       "intro1": "Creamos soluciones digitales que cambian la manera en que las personas y las empresas interactúan con el mundo.",
-      "intro2": "Desde recorridos virtuales y simuladores hasta asistentes de inteligencia artificial y software operativo, nuestro trabajo tiene un objetivo claro: ayudarte a avanzar con tecnología útil, precisa y poderosa.",
+      "intro2": "Desde plataformas web y software operativo hasta asistentes de inteligencia artificial y experiencias inmersivas, nuestro trabajo tiene un objetivo claro: ayudarte a avanzar con tecnología útil, precisa y poderosa.",
       "highlight": "No se trata solo de programar. Se trata de transformar.",
       "virtualTours": {
         "title": "Recorridos Virtuales"
@@ -301,11 +320,11 @@
       "items": [
         {
           "title": "Inmobiliarias y constructoras",
-          "description": "Necesitan mostrar, vender y diferenciarse. Creamos recorridos virtuales inmersivos y plataformas que cierran ventas."
+          "description": "Necesitan mostrar, vender y diferenciarse. Creamos plataformas digitales, recorridos virtuales y sistemas de gestión que cierran ventas."
         },
         {
           "title": "Industrias con operación fabril",
-          "description": "Capacitamos operadores en realidad virtual simulando escenarios reales (calor, vibración, riesgo), evitando accidentes y acelerando el aprendizaje."
+          "description": "Digitalizamos operaciones con ERPs, capacitamos operadores con simuladores y RV, y automatizamos procesos para prevenir accidentes y acelerar el aprendizaje."
         },
         {
           "title": "Retailers y cadenas comerciales",

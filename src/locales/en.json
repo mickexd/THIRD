@@ -1,4 +1,23 @@
 {
+  "seo": {
+    "brand": "THIRD Studio",
+    "brandAlt": "THIRD Dev Studio",
+    "siteName": "THIRD Studio - Digital Innovation & Development",
+    "home": {
+      "title": "THIRD Studio | Software Development, AI & Digital Transformation",
+      "description": "THIRD Studio delivers cutting-edge software development, AI automation, and digital transformation solutions. Web apps, mobile apps, VR/AR experiences, and strategic consulting for businesses ready to evolve.",
+      "keywords": "THIRD Studio, THIRD Dev Studio, software development, AI automation, digital transformation, web development, mobile apps, VR AR experiences, technology consulting, custom software, Guadalajara Mexico"
+    },
+    "brochure": {
+      "title": "THIRD Studio - Digital Solutions Brochure | Software, AI & Innovation",
+      "description": "Discover THIRD Studio's comprehensive digital solutions: custom software, AI agents, virtual tours, and turnkey projects. We transform businesses with technology that works.",
+      "keywords": "THIRD Studio brochure, digital solutions, AI agents, virtual tours, software development company, digital transformation services"
+    },
+    "og": {
+      "siteName": "THIRD Studio",
+      "locale": "en_US"
+    }
+  },
   "nav": {
     "services": "Services",
     "howWeWork": "How We Work",
@@ -221,7 +240,7 @@
     "whatWeDo": {
       "sectionTitle": "What do we do at Third?",
       "intro1": "We create digital solutions that change the way people and companies interact with the world.",
-      "intro2": "From virtual tours and simulators to artificial intelligence assistants and operational software, our work has a clear objective: to help you move forward with useful, precise, and powerful technology.",
+      "intro2": "From web platforms and operational software to artificial intelligence assistants and immersive experiences, our work has a clear objective: to help you move forward with useful, precise, and powerful technology.",
       "highlight": "It's not just about programming. It's about transforming.",
       "virtualTours": {
         "title": "Virtual Tours"
@@ -301,11 +320,11 @@
       "items": [
         {
           "title": "Real Estate & Construction",
-          "description": "They need to show, sell, and differentiate. We create immersive virtual tours and platforms that close sales."
+          "description": "They need to show, sell, and differentiate. We create digital platforms, virtual tours, and management systems that close sales."
         },
         {
           "title": "Industries with Factory Operations",
-          "description": "We train operators in virtual reality simulating real scenarios (heat, vibration, risk), preventing accidents and accelerating learning."
+          "description": "We digitalize operations with ERPs, train operators with simulators and VR, and automate processes to prevent accidents and accelerate learning."
         },
         {
           "title": "Retailers & Commercial Chains",

@@ -3,30 +3,46 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
-  canonicalURL?: string;
+  imageAlt?: string;
+  locale?: string;
+  keywords?: string;
 }
 
 const {
   title,
-  description = "Third Studio specializes in immersive VR experiences, architectural visualization, and digital innovation. We transform your ideas into reality through cutting-edge technology.",
+  description = "THIRD Studio delivers cutting-edge software development, AI automation, and digital transformation solutions for businesses ready to evolve.",
   image = "https://thirdstudio.tech/assets/img/logo.webp",
-  canonicalURL = Astro.url.href,
+  imageAlt = "THIRD Studio - Software Development & Digital Innovation",
+  locale = "es",
+  keywords = "THIRD Studio, THIRD Dev Studio, desarrollo de software, automatización IA, transformación digital, desarrollo web, aplicaciones móviles, experiencias VR AR, consultoría tecnológica",
 } = Astro.props;
+
+// Language & locale config
+const htmlLang = locale === "en" ? "en" : "es";
+const ogLocale = locale === "en" ? "en_US" : "es_MX";
+
+// Canonical URL construction — default locale (es) has no prefix, en gets /en/
+const siteUrl = "https://thirdstudio.tech";
+const rawPath = Astro.url.pathname;
+// Strip any locale prefix to get the base path
+const basePath = rawPath.replace(/^\/(en)(\/|$)/, "/");
+const normalizedBase = basePath === "/" ? "" : basePath.replace(/\/$/, "");
+
+const canonicalEs = `${siteUrl}${normalizedBase}`;
+const canonicalEn = `${siteUrl}/en${normalizedBase}`;
+const canonicalURL = locale === "en" ? canonicalEn : canonicalEs;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Third Studio specializes in immersive VR experiences, architectural visualization, and digital innovation. We transform your ideas into reality through cutting-edge technology."
-    />
-    <meta
-      name="keywords"
-      content="VR, Virtual Reality, Architectural Visualization, Digital Studio, Innovation, 3D Tours, Third Studio, Real Estate VR, Industrial VR"
-    />
-    <meta name="author" content="Third Studio" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="THIRD Studio" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
+    <meta name="theme-color" content="#9333ea" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
@@ -38,32 +54,54 @@ const {
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://thirdstudio.tech/" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
-    <meta
-      property="og:description"
-      content="Third Studio specializes in immersive VR experiences, architectural visualization, and digital innovation."
-    />
-    <meta
-      property="og:image"
-      content="https://thirdstudio.tech/assets/img/logo.webp"
-    />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="THIRD Studio" />
+    <meta property="og:locale" content={ogLocale} />
+    {locale === "en"
+      ? <meta property="og:locale:alternate" content="es_MX" />
+      : <meta property="og:locale:alternate" content="en_US" />
+    }
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://thirdstudio.tech/" />
-    <meta property="twitter:title" content={title} />
-    <meta
-      property="twitter:description"
-      content="Third Studio specializes in immersive VR experiences, architectural visualization, and digital innovation."
-    />
-    <meta
-      property="twitter:image"
-      content="https://thirdstudio.tech/assets/img/logo.webp"
-    />
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={imageAlt} />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://thirdstudio.tech/" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Hreflang: bilingual SEO signals for Google -->
+    <link rel="alternate" hreflang="es" href={canonicalEs} />
+    <link rel="alternate" hreflang="en" href={canonicalEn} />
+    <link rel="alternate" hreflang="x-default" href={canonicalEs} />
+
+    <!-- WebSite Structured Data (enables Google Sitelinks Search Box) -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "THIRD Studio",
+      "alternateName": "THIRD Dev Studio",
+      "url": siteUrl,
+      "inLanguage": [htmlLang],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${siteUrl}/?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
+    })} />
+
     <script is:inline>
       // Apply saved language as early as possible to prevent flash of wrong language
       (function () {

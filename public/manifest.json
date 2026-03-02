@@ -1,6 +1,7 @@
 {
-  "short_name": "Third",
-  "name": "Third Website",
+  "short_name": "THIRD Studio",
+  "name": "THIRD Studio - Software Development & Digital Innovation",
+  "description": "THIRD Studio delivers cutting-edge software development, AI automation, and digital transformation solutions.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,16 +11,22 @@
     {
       "src": "/assets/img/logo.webp",
       "type": "image/webp",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "/assets/img/logo.webp",
       "type": "image/webp",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait-primary",
+  "theme_color": "#9333ea",
+  "background_color": "#0a0a0a",
+  "lang": "es",
+  "categories": ["business", "productivity", "technology"]
 }
